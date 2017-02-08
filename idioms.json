@@ -1,0 +1,119 @@
+[
+  {
+    "idiom": "The early bird gets the worm",
+    "replacements": [
+      ["The {{ adj }} {{ noun }}", "gets the {{ noun }}"]
+    ],
+    "adjectives": ["early"],
+    "nouns": ["bird", "worm"]
+  },
+  {
+    "idiom": "Cleanliness is next to godliness",
+    "replacements": [
+      ["{{ noun }}iness", "is next to {{ noun }}iness"]
+    ],
+    "nouns": ["god"],
+    "adjectives": ["godliness", "cleanliness"]
+  },
+  {
+    "idiom": "Actions speak louder than words.",
+    "replacements": [
+      ["{{ nouns }}", "speak louder than {{ nouns }}"]
+    ],
+    "nouns": ["actions", "words"]
+  },
+  {
+    "idiom": "Like taking candy from a baby",
+    "replacements": [
+      ["Taking {{ nouns }}", "from a {{ noun }}"]
+    ],
+    "nouns": ["candy", "baby"]
+  },
+  {
+    "idiom": "A picture is worth a thousand words",
+    "replacements": [
+      ["A {{ noun }}", "is worth a thousand {{ nouns }}"]
+    ],
+    "nouns": ["picture", "words"]
+  },
+  {
+    "idiom": "A rolling stone gathers no moss",
+    "replacements": [
+      ["A {{ noun }}", "gathers no {{ nouns }}"]
+    ],
+    "nouns": ["rolling stone", "moss"]
+  },
+  {
+    "idiom": "Curiosity killed the cat",
+    "replacements": [
+      ["{{ nouns }}", "killed the {{ noun }}"]
+    ],
+    "nouns": ["cat"]
+  },
+  {
+    "idiom": "A bird in the hand is worth two in the bush.",
+    "replacements": [
+      ["A {{ noun }} in the {{ noun }}", "is worth two in the {{ noun }}"]
+    ],
+    "nouns": ["bird", "hand", "bush"],
+    "numbers": ["two"]
+  },
+  {
+    "idiom": "All work and no play makes Jack a dull boy.",
+    "replacements": [
+      ["All {{ noun }} and no {{ noun }}", "makes Jack a {{ adj }} {{ noun }}"]
+    ],
+    "nouns": ["work", "play", "boy"],
+    "adjectives": ["dull"]
+  },
+  {
+    "idiom": "An apple a day keeps the doctor away.",
+    "replacements": [
+      ["An {{ noun }} a day", "keeps the {{ noun }} away."]
+    ],
+    "nouns": ["apple", "doctor"]
+  },
+  {
+    "idiom": "April showers brings May flowers.",
+    "replacements": [
+      ["April {{ nouns }} brings May {{ nouns }}"]
+    ],
+    "nouns": ["showers", "flowers"]
+  },
+  {
+    "idiom": "Beggars can't be choosers",
+    "replacements": [
+      ["{{ nouns }}", "can't be {{ nouns }}"]
+    ],
+    "nouns": ["beggars", "choosers"]
+  },
+  {
+    "idiom": "Don't count your chickens before they are hatched.",
+    "replacements": [
+      ["Don't count your {{ nouns }} before they're hatched."]
+    ],
+    "nouns": ["chickens"]
+  },
+  {
+    "idiom": "Don't put all your eggs in one basket.",
+    "replacements": [
+      ["Don't put all your {{ nouns }} in one {{ noun }}"]
+    ],
+    "nouns": ["eggs", "basket"]
+  },
+  {
+    "idiom": "There's no use crying over spilt milk",
+    "replacements": [
+      ["There's no use crying over spilt {{ nouns }}"]
+    ],
+    "nouns": ["milk"]
+  },
+  {
+    "idiom": "Soft as a baby's bottom",
+    "replacements": [
+      ["{{ adj }}", "as a {{ noun }}'s {{ noun }}"]
+    ],
+    "nouns": ["baby", "bottom"],
+    "adjectives": ["soft"]
+  }
+]

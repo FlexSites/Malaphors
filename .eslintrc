@@ -1,0 +1,6 @@
+{
+  "extends": [
+    "vstg",
+    "vstg/lambda"
+  ]
+}
