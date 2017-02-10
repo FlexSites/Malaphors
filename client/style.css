@@ -31,29 +31,13 @@ h2 {
   margin: 0;
 }
 
-a {
-  font-family: 'Oswald';
-  padding: 1vh 10vw;
-  border: 3px solid #fff;
-  background: rgba(255, 255, 255, 0.15);
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+#share a {
   color: #fff;
-  font-size: 5vh;
-  border-radius: 10vh;
-  display: inline-block;
-  max-width: 50vw;
-  align-self: center;
-}
-
-a:hover {
-  background-color: rgba(255, 255, 255, 0.25);
+  border-color: #fff;
 }
 
 @media (max-width: 767px) {
   body {
     padding: 10vh 10vw;
-  }
-  a {
-    padding: 1vh 25vw;
   }
 }
