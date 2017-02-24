@@ -2,20 +2,16 @@
 
 const express = require('express')
 const Idiom = require('./services/idiom')
-const pug = require('pug')
 const json = require('body-parser').json
 const dynamo = require('./services/Dynamo')
 const screenshot = require('./services/screenshot').default
-const uuid = require('uuid')
-
-const template = pug.compileFile('index.pug')
-
+const ADMIN_TOKEN = require('./constants').ADMIN_TOKEN
 const DEFAULT_PORT = 3000
 const PORT = process.env.PORT || DEFAULT_PORT
 
 const app = express()
 
-const ADMIN_TOKEN = process.env.ADMIN_TOKEN || 'f8b9b2cf-068b-4b25-adf9-2a35e34805a0' || uuid.v4()
+app.set('view engine', 'pug')
 
 console.info('ADMIN TOKEN', ADMIN_TOKEN)
 
@@ -35,18 +31,29 @@ function authMiddleware (req, res, next) {
 }
 
 app.get('/', (req, res, next) => {
-
-  res.send(template({
+  res.render('index', {
     admin: isLoggedIn(req),
     background: Idiom.randomImage(),
     author: Idiom.randomAuthor(),
     idiom: Idiom.randomIdiom(),
-  }))
+  })
 })
 
 app.get('/random/:id?', (req, res, next) => {
   return dynamo.random(req.params.id, req.query.sort, req.query.reverse === 'true')
     .then(res.send.bind(res))
+    .catch(next)
+})
+
+app.get('/share/:id', authMiddleware, (req, res, next) => {
+  return dynamo.get(req.params.id)
+    .then((idiom) => {
+      res.render('share', {
+        background: Idiom.randomImage(),
+        author: Idiom.randomAuthor(),
+        idiom: idiom.text,
+      })
+    })
     .catch(next)
 })
 
@@ -63,7 +70,12 @@ app.post('/', authMiddleware, json(), (req, res, next) => {
 app.get('/:id', (req, res, next) => {
   return dynamo.get(req.params.id)
     .then((idiom) => {
-      return res.send(template({ id: idiom.sort, background: Idiom.randomImage(), author: Idiom.randomAuthor(), idiom: idiom.text }))
+      return res.render('index', {
+        id: idiom.sort,
+        background: Idiom.randomImage(),
+        author: Idiom.randomAuthor(),
+        idiom: idiom.text,
+      })
     })
     .catch(next)
 })
