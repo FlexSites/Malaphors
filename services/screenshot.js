@@ -10,6 +10,8 @@ function screenshot (id, width = 1024, height = 768) {
       width,
       height,
     },
+  }, (err) => {
+    console.error(err)
   })
     // .pipe(fs.createWriteStream('myscreenshot.jpg'))
 }
