@@ -51,10 +51,7 @@ app.get('/random/:id?', (req, res, next) => {
 })
 
 app.get('/preview/:id', (req, res, next) => {
-  const stream = screenshot(req.params.id, parseInt(req.query.width || 0, 10), parseInt(req.query.height || 0, 10))
-    .pipe(res)
-
-  stream.on('error', next)
+  screenshot(req.params.id, parseInt(req.query.width || 0, 10), parseInt(req.query.height || 0, 10), res)
 })
 
 app.post('/', authMiddleware, json(), (req, res, next) => {
