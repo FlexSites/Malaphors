@@ -51,7 +51,7 @@ app.get('/random/:id?', (req, res, next) => {
 })
 
 app.get('/preview/:id', (req, res, next) => {
-  screenshot(req.params.id, parseInt(req.query.width || 0, 10), parseInt(req.query.height || 0, 10), res)
+  screenshot(req.params.id.replace(/\.jpg$/i, ''), parseInt(req.query.width || 0, 10), parseInt(req.query.height || 0, 10), res)
 })
 
 app.post('/', authMiddleware, json(), (req, res, next) => {
@@ -63,7 +63,7 @@ app.post('/', authMiddleware, json(), (req, res, next) => {
 app.get('/:id', (req, res, next) => {
   return dynamo.get(req.params.id)
     .then((idiom) => {
-      return res.send(template({ background: Idiom.randomImage(), author: Idiom.randomAuthor(), idiom: idiom.text }))
+      return res.send(template({ id: idiom.sort, background: Idiom.randomImage(), author: Idiom.randomAuthor(), idiom: idiom.text }))
     })
     .catch(next)
 })
