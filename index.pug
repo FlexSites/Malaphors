@@ -2,17 +2,51 @@ doctype html
 html
   head
     link(href='https://fonts.googleapis.com/css?family=Barrio|Caveat+Brush|Merriweather|Oswald', rel='stylesheet')
-    link(rel='stylesheet', href='vendor/font-awesome/css/font-awesome.min.css')
-    link(rel='stylesheet', href='vendor/jssocials/dist/jssocials.css')
-    link(rel='stylesheet', href='vendor/jssocials/dist/jssocials-theme-plain.css')
-    link(rel='stylesheet', href='style.css')
-    script(src='vendor/jquery/dist/jquery.min.js')
-    script(src='vendor/jssocials/dist/jssocials.min.js')
-    script(src='script.js')
+    link(rel='stylesheet', href='/vendor/font-awesome/css/font-awesome.min.css')
+    link(rel='stylesheet', href='/vendor/jssocials/dist/jssocials.css')
+    link(rel='stylesheet', href='/vendor/jssocials/dist/jssocials-theme-plain.css')
+    link(rel='stylesheet', href='/style.css')
     meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;')
-    meta(property='og:image', content='http://idioms.website/idioms')
+
+    // Social Spiders
+    title= idiom
+    meta(name='description', content= author)
+    // Schema.org markup for Google+
+    meta(itemprop='name', content= idiom)
+    meta(itemprop='description', content= author)
+    meta(itemprop='image', content=`https://idioms-today.herokuapp.com/preview/${ id }.jpg`)
+    // Twitter Card data
+    meta(name='twitter:card', content='summary_large_image')
+    //- meta(name='twitter:site', content='@idiomstoday')
+    meta(name='twitter:title', content= idiom)
+    meta(name='twitter:description', content= author)
+    //- meta(name='twitter:creator', content='@sethtippetts')
+
+    // Twitter summary card with large image must be at least 280x150px
+    meta(name='twitter:image:src', content='https://idioms-today.herokuapp.com/preview/${ id }.jpg?width=280&height=150')
+
+    // Facebook
+    meta(property='og:title', content= idiom)
+    meta(property='og:type', content='article')
+    meta(property='og:url', content=`https://idioms-today.herokuapp.com/${ id }`)
+    meta(property='og:image', content=`https://idioms-today.herokuapp.com/preview/${ id }.jpg?width=1200&height=630`)
+    meta(property='og:description', content= author)
+    meta(property='og:site_name', content='Idioms Today')
+    //- meta(property='article:published_time', content='2013-09-17T05:59:00+01:00')
+    //- meta(property='article:modified_time', content='2013-09-16T19:08:47+01:00')
+    meta(property='article:section', content= author)
+    meta(property='article:tag', content='idiom')
+
   body(style=`background-image: url(${ background });`)
     // <h1>A rolling baby gathers no candy</h1>
-    h1= idiom
-    h2= `- ${ author }`
-    #share
+    h1#text(contenteditable= admin)= idiom
+    h2#author(contenteditable= admin)= `- ${ author }`
+    #share.share
+    script(src='/vendor/jquery/dist/jquery.min.js')
+    script(src='/vendor/jssocials/dist/jssocials.min.js')
+    script(src='/sharing.js')
+    if admin
+      .share
+        a.btn#next Next
+        a.btn#save Save
+      script(src="/admin.js")

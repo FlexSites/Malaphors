@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   background-image: url(haq5cw9s6oo-bruno-marinho.jpg);
   background-position: center;
@@ -12,6 +16,10 @@ body {
   height: 100vh;
   width: 100vw;
   box-sizing: border-box;
+}
+
+h1, h2 {
+  outline: none;
 }
 
 h1 {
@@ -31,10 +39,39 @@ h2 {
   margin: 0;
 }
 
-#share a {
+.share a {
   color: #fff;
   border-color: #fff;
 }
+
+button {
+  float: left;
+}
+
+.btn {
+  font-family: 'Oswald', 'Merriweather', 'Caveat Brush', cursive, sans-serif, serif;
+  padding: 2vh 4vw;
+  margin: 2vh 2vw;
+}
+
+#save {
+  background: #6c0;
+}
+
+#save:hover {
+  background: #8e2;
+  cursor: pointer;
+}
+
+#next {
+  background: #900;
+}
+
+#next:hover {
+  background: #b00;
+  cursor: pointer;
+}
+
 
 @media (max-width: 767px) {
   body {
