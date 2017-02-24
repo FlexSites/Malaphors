@@ -25,10 +25,12 @@
     "contractions": "0.0.7",
     "express": "^4.14.1",
     "lodash.shuffle": "^4.2.0",
+    "phantomjs": "^2.1.7",
     "pluralize": "^3.1.0",
     "pos": "^0.4.2",
     "pug": "^2.0.0-beta11",
     "upper-case-first": "^1.1.2",
+    "webshot": "^0.18.0",
     "wordpos": "^1.1.2"
   }
 }

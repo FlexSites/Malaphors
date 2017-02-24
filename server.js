@@ -5,6 +5,7 @@ const Idiom = require('./services/idiom');
 const pug = require('pug');
 const json = require('body-parser').json;
 const dynamo = require('./services/Dynamo');
+const screenshot = require('./services/screenshot').default;
 
 const template = pug.compileFile('index.pug');
 
