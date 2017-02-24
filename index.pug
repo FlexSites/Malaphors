@@ -2,15 +2,11 @@ doctype html
 html
   head
     link(href='https://fonts.googleapis.com/css?family=Barrio|Caveat+Brush|Merriweather|Oswald', rel='stylesheet')
-    link(rel='stylesheet', href='vendor/font-awesome/css/font-awesome.min.css')
-    link(rel='stylesheet', href='vendor/jssocials/dist/jssocials.css')
-    link(rel='stylesheet', href='vendor/jssocials/dist/jssocials-theme-plain.css')
-    link(rel='stylesheet', href='style.css')
-    script(src='vendor/jquery/dist/jquery.min.js')
-    script(src='vendor/jssocials/dist/jssocials.min.js')
-    script(src='script.js')
+    link(rel='stylesheet', href='/vendor/font-awesome/css/font-awesome.min.css')
+    link(rel='stylesheet', href='/vendor/jssocials/dist/jssocials.css')
+    link(rel='stylesheet', href='/vendor/jssocials/dist/jssocials-theme-plain.css')
+    link(rel='stylesheet', href='/style.css')
     meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;')
-    meta(property='og:image', content='http://idioms.website/idioms')
 
     // Social Spiders
     title= idiom
@@ -43,6 +39,14 @@ html
 
   body(style=`background-image: url(${ background });`)
     // <h1>A rolling baby gathers no candy</h1>
-    h1= idiom
-    h2= `- ${ author }`
-    #share
+    h1#text(contenteditable= admin)= idiom
+    h2#author(contenteditable= admin)= `- ${ author }`
+    #share.share
+    script(src='/vendor/jquery/dist/jquery.min.js')
+    script(src='/vendor/jssocials/dist/jssocials.min.js')
+    script(src='/sharing.js')
+    if admin
+      .share
+        a.btn#next Next
+        a.btn#save Save
+      script(src="/admin.js")

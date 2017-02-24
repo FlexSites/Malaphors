@@ -6,6 +6,7 @@ const pug = require('pug');
 const json = require('body-parser').json;
 const dynamo = require('./services/Dynamo');
 const screenshot = require('./services/screenshot').default;
+const uuid = require('uuid');
 
 const template = pug.compileFile('index.pug');
 
@@ -14,11 +15,16 @@ const PORT = process.env.PORT || DEFAULT_PORT;
 
 const app = express();
 
+const ADMIN_TOKEN = process.env.ADMIN_TOKEN || 'f8b9b2cf-068b-4b25-adf9-2a35e34805a0' || uuid.v4();
+
+console.info('ADMIN TOKEN', ADMIN_TOKEN);
+
 app.use(express.static('client'));
 
 app.get('/', (req, res, next) => {
 
   res.send(template({
+    admin: req.query.token === ADMIN_TOKEN,
     background: Idiom.randomImage(),
     author: Idiom.randomAuthor(),
     idiom: Idiom.randomIdiom(),
