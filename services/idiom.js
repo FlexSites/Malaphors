@@ -32,7 +32,7 @@ function mergeIdioms(entry1, entry2) {
   const adjectives = [].concat(entry1.adjectives || [], entry2.adjectives || [])
   const parts = []
 
-  for (let i = 0 i < maxPartLen i++) {
+  for (let i = 0; i < maxPartLen; i++) {
     const part = half() ? idiom1[i] || idiom2[i] : idiom2[i] || idiom1[i]
 
     parts.push(part)
