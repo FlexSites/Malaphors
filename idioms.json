@@ -115,5 +115,33 @@
     ],
     "nouns": ["baby", "bottom"],
     "adjectives": ["soft"]
+  },
+  {
+    "idiom": "Two wrongs do not make a right",
+    "replacements": [
+      ["Two {{ nouns }} do not make a {{ noun }}"]
+    ],
+    "nouns": ["wrongs", "right"]
+  },
+  {
+    "idiom": "Variety is the spice of life.",
+    "replacements": [
+      "{{ noun }} is the", "{{ noun }} of {{ noun }}"
+    ],
+    "nouns": ["variety", "spice", "life"]
+  },
+  {
+    "idiom": "You can't have your cake and eat it too",
+    "replacements": [
+      "You can't have your {{ noun }}", "and eat it too"
+    ],
+    "nouns": ["cake"]
+  },
+  {
+    "idiom": "Birds of a feather flock together.",
+    "replacements": [
+      "{{ nouns }} of a {{ noun }}", "flock together"
+    ],
+    "nouns": ["birds", "feather"]
   }
 ]
