@@ -32,7 +32,16 @@ function authMiddleware (req, res, next) {
 
 app.get('/', (req, res, next) => {
   res.render('index', {
-    admin: isLoggedIn(req),
+    admin: false,
+    background: Idiom.randomImage(),
+    author: Idiom.randomAuthor(),
+    idiom: Idiom.randomIdiom(),
+  })
+})
+
+app.get('/admin', authMiddleware, (req, res, next) => {
+  res.render('index', {
+    admin: true,
     background: Idiom.randomImage(),
     author: Idiom.randomAuthor(),
     idiom: Idiom.randomIdiom(),
