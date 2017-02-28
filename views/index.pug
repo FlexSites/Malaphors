@@ -38,19 +38,18 @@ block content
   #content(style= `background-image: url(${ background });`)
     a.history#back
       i.fa.fa-chevron-circle-left.fa-4x(aria-hidden="true")
+    a.history#next
+      i.fa.fa-chevron-circle-right.fa-4x(aria-hidden="true")
     #idiom
       h1#text(contenteditable= admin)= idiom.text
       h2#author(contenteditable= admin)= `- ${ idiom.author || '' }`
       #share.share
-    a.history#next
-      i.fa.fa-chevron-circle-right.fa-4x(aria-hidden="true")
-
-  // <Adsense>
-  script(async='', src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js')
-  ins.adsbygoogle(style='display:block', data-ad-client='ca-pub-7872321750046986', data-ad-slot='2188377281', data-ad-format='auto')
-  script.
-    (adsbygoogle = window.adsbygoogle || []).push({});
-  // </AdSense>
+    // <Adsense>
+    script(async='', src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js')
+    ins.adsbygoogle(style='display:block', data-ad-client='ca-pub-7872321750046986', data-ad-slot='2188377281', data-ad-format='auto')
+    script.
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    // </AdSense>
   // <Social>
   script(src='/vendor/jquery/dist/jquery.min.js')
   script(src='/vendor/jssocials/dist/jssocials.min.js')
