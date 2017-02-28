@@ -56,8 +56,7 @@ app.get('/share/:id', authMiddleware, (req, res, next) => {
       res.render('share', {
         environment: ENV,
         background: Idiom.randomImage(),
-        author: Idiom.randomAuthor(),
-        idiom: idiom.text,
+        idiom,
       })
     })
     .catch(next)
@@ -82,8 +81,8 @@ app.get('/api/random', (req, res, next) => {
 app.get('/api/:id', (req, res, next) => {
   dynamo.get(req.params.id)
     .then((idiom) => {
-      idiom.id = idiom.sort
       idiom.background = Idiom.randomImage()
+      idiom.id = idiom.sort
       delete idiom.sort
       return idiom
     })
@@ -94,6 +93,8 @@ app.get('/api/:id', (req, res, next) => {
 app.get('/:id', (req, res, next) => {
   dynamo.get(req.params.id)
     .then((idiom) => {
+      idiom.id = idiom.sort
+      delete idiom.sort
       console.log('idiom', idiom)
       res.render('index', {
         // shareUrl: random.href,

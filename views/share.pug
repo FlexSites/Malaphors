@@ -2,3 +2,9 @@ extends layout
 
 block meta
   meta(name='robots', content='noindex,nofollow')
+
+block content
+  #content(style= `background-image: url(${ background });`)
+    #idiom
+      h1#text= idiom.text
+      h2#author= `- ${ idiom.author || '' }`
