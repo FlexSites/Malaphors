@@ -50,7 +50,7 @@ app.get('/random/:id?', (req, res, next) => {
     .catch(next)
 })
 
-app.get('/share/:id', authMiddleware, (req, res, next) => {
+app.get('/share/:id', (req, res, next) => {
   return dynamo.get(req.params.id)
     .then((idiom) => {
       res.render('share', {
