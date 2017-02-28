@@ -45,13 +45,12 @@ block content
     a.history#next
       i.fa.fa-chevron-circle-right.fa-4x(aria-hidden="true")
 
-  if (environment === 'production')
-    // <Adsense>
-    script(async='', src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js')
-    ins.adsbygoogle(style='display:block', data-ad-client='ca-pub-7872321750046986', data-ad-slot='2188377281', data-ad-format='auto')
-    script.
-      (adsbygoogle = window.adsbygoogle || []).push({});
-    // </AdSense>
+  // <Adsense>
+  script(async='', src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js')
+  ins.adsbygoogle(style='display:block', data-ad-client='ca-pub-7872321750046986', data-ad-slot='2188377281', data-ad-format='auto')
+  script.
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  // </AdSense>
   // <Social>
   script(src='/vendor/jquery/dist/jquery.min.js')
   script(src='/vendor/jssocials/dist/jssocials.min.js')
