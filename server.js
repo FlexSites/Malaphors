@@ -8,11 +8,14 @@ const screenshot = require('./services/screenshot').default
 const ADMIN_TOKEN = require('./constants').ADMIN_TOKEN
 const DEFAULT_PORT = 3000
 const PORT = process.env.PORT || DEFAULT_PORT
+var path = require('path')
+const favicon = require('serve-favicon')
 
 const app = express()
 
 app.set('view engine', 'pug')
 
+app.use(favicon(path.join(__dirname, 'client', 'icons', 'favicon.ico')))
 console.info('ADMIN TOKEN', ADMIN_TOKEN)
 
 app.use(express.static('client'))
