@@ -8,6 +8,7 @@ const screenshot = require('./services/screenshot').default
 const ADMIN_TOKEN = require('./constants').ADMIN_TOKEN
 const DEFAULT_PORT = 3000
 const PORT = process.env.PORT || DEFAULT_PORT
+const ENV = process.env.NODE_ENV || 'development'
 var path = require('path')
 const favicon = require('serve-favicon')
 
@@ -33,17 +34,9 @@ function authMiddleware (req, res, next) {
   next(err)
 }
 
-app.get('/', (req, res, next) => {
-  res.render('index', {
-    admin: false,
-    background: Idiom.randomImage(),
-    author: Idiom.randomAuthor(),
-    idiom: Idiom.randomIdiom(),
-  })
-})
-
 app.get('/admin', authMiddleware, (req, res, next) => {
   res.render('index', {
+    environment: ENV,
     admin: true,
     background: Idiom.randomImage(),
     author: Idiom.randomAuthor(),
@@ -61,6 +54,7 @@ app.get('/share/:id', authMiddleware, (req, res, next) => {
   return dynamo.get(req.params.id)
     .then((idiom) => {
       res.render('share', {
+        environment: ENV,
         background: Idiom.randomImage(),
         author: Idiom.randomAuthor(),
         idiom: idiom.text,
@@ -79,18 +73,48 @@ app.post('/', authMiddleware, json(), (req, res, next) => {
     .catch(next)
 })
 
-app.get('/:id', (req, res, next) => {
-  return dynamo.get(req.params.id)
+app.get('/api/random', (req, res, next) => {
+  dynamo.random(req.params.id, req.query.sort, req.query.reverse === 'true')
+    .then(res.send.bind(res))
+    .catch(next)
+})
+
+app.get('/api/:id', (req, res, next) => {
+  dynamo.get(req.params.id)
     .then((idiom) => {
-      return res.render('index', {
-        id: idiom.sort,
+      idiom.id = idiom.sort
+      idiom.background = Idiom.randomImage()
+      delete idiom.sort
+      return idiom
+    })
+    .then(res.send.bind(res))
+    .catch(next)
+})
+
+app.get('/:id', (req, res, next) => {
+  dynamo.get(req.params.id)
+    .then((idiom) => {
+      console.log('idiom', idiom)
+      res.render('index', {
+        // shareUrl: random.href,
+        // nextUrl: random.next,
+        environment: ENV,
         background: Idiom.randomImage(),
-        author: Idiom.randomAuthor(),
-        idiom: idiom.text,
+        idiom,
       })
     })
     .catch(next)
 })
+
+app.get('/', (req, res, next) => {
+  res.render('index', {
+    idiom: {},
+    environment: ENV,
+    background: Idiom.randomImage(),
+  })
+})
+
+
 
 app.use((err, req, res, next) => {
   const status = err.status || 500

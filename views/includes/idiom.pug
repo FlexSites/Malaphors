@@ -1,0 +1,4 @@
+mixing content(text, author, background, admin)
+  div(style= background ? `background-image: url(${ background });` : '')
+    h1#text(contenteditable= admin)= text
+    h2#author(contenteditable= admin)= `- ${ author }`

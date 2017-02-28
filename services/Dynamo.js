@@ -1,18 +1,19 @@
-'use strict';
+'use strict'
 
-const AWS = require('aws-sdk');
-const uuid = require('uuid');
-const stringify = require('querystring').stringify;
+const AWS = require('aws-sdk')
+const uuid = require('uuid')
+const stringify = require('querystring').stringify
+const Idiom = require('./idiom')
 const db = new AWS.DynamoDB.DocumentClient({
   apiVersion: '2012-08-10',
   region: 'us-west-2',
-});
+})
 
-const PRIMARY_KEY = 'idiom';
+const PRIMARY_KEY = 'idiom'
 
 exports.get = (id) => {
   if (!id) {
-    return Promise.reject(new Error('Missing required field ID'));
+    return Promise.reject(new Error('Missing required field ID'))
   }
 
   return db.get({
@@ -24,9 +25,9 @@ exports.get = (id) => {
   })
   .promise()
   .then((results) => {
-    return results.Item;
-  });
-};
+    return results.Item
+  })
+}
 
 exports.create = ({ text, author }) => {
   return db.put({
@@ -38,12 +39,12 @@ exports.create = ({ text, author }) => {
       author,
     },
   })
-  .promise();
-};
+  .promise()
+}
 
 function random(key, sort, reverse) {
   if (!sort) {
-    sort = uuid.v4();
+    sort = uuid.v4()
   }
 
   const params = {
@@ -60,7 +61,7 @@ function random(key, sort, reverse) {
       ':id': PRIMARY_KEY,
       ':sort': sort,
     },
-  };
+  }
 
   if (key) {
     params.ExclusiveStartKey = {
@@ -68,29 +69,33 @@ function random(key, sort, reverse) {
       // sort: key,
       id: 'idiom',
       sort: key,
-    };
+    }
   }
 
   return db.query(params)
     .promise()
     .then((results) => {
-      const item = results.Items[0];
+      const item = results.Items[0]
 
       console.log(results)
 
-      const lastKey = (results.LastEvaluatedKey && results.LastEvaluatedKey.sort) || '';
+      const lastKey = (results.LastEvaluatedKey && results.LastEvaluatedKey.sort) || ''
 
       if (!item) {
-        console.log('no item found');
+        console.log('no item found')
 
-        return random(null, sort, !reverse);
+        return random(null, sort, !reverse)
       }
 
       return {
         href: `/${ item.sort }`,
+        text: item.text,
+        id: item.sort,
+        author: item.author,
+        background: Idiom.randomImage(),
         next: `/random/${ lastKey }?${ stringify({ sort, reverse: !!reverse }) }`,
-      };
-    });
+      }
+    })
 }
 
-exports.random = random;
+exports.random = random
