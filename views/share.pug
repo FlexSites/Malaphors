@@ -4,7 +4,7 @@ block meta
   meta(name='robots', content='noindex,nofollow')
 
 block content
-  #content(style= `background-image: url(${ background });`)
+  #content(style= `background-image: url(https://www.idioms.today${ background });`)
     #idiom
       h1#text= idiom.text
       h2#author= `- ${ idiom.author || '' }`
