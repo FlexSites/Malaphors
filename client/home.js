@@ -5,9 +5,39 @@
     var $text = $('#text')
     var $author = $('#author')
     var $content = $('#content')
+    var $next = $('#next')
+    var $back = $('#back')
 
-    if (window.location.pathname === '/') {
-      getNext()
+
+
+    var IS_MOBILE = window.matchMedia('(max-width: 767px)')
+
+    if (IS_MOBILE) {
+      $('#content')
+        .swipe({
+          // Generic swipe handler for all directions
+          swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
+            if (direction === 'left') {
+              getNext()
+            } else if (direction === 'right') {
+              window.history.back()
+              window.location.reload()
+            }
+          },
+          // Default is 75px, set to 0 for demo so any distance triggers swipe
+          threshold: 0,
+        })
+    } else {
+      if (window.location.pathname === '/') {
+        getNext()
+        $next.on('click', getNext)
+      }
+      $back.on('click', function () {
+        window.history.back()
+        setTimeout(function () {
+          load('/api' + window.location.pathname, updateDom)
+        }, 100)
+      })
     }
 
     $('#share').jsSocials({
@@ -17,13 +47,6 @@
       url: window.location.href,
     })
 
-    $('#next').on('click', getNext)
-    $('#back').on('click', function () {
-      window.history.back()
-      setTimeout(function () {
-        load('/api' + window.location.pathname, updateDom)
-      }, 100)
-    })
 
     function getNext () {
       var nextUrl = window.localStorage.getItem('nextIdiomHref') || '/api/random'

@@ -123,7 +123,13 @@ button {
 }
 
 @media (max-width: 767px) {
-  body {
+  h1 {
+    font-size: 8vh;
+  }
+  #content {
     padding: 10vh 10vw;
+  }
+  .history {
+    display: none;
   }
 }
