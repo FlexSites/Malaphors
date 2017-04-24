@@ -4,7 +4,10 @@ import { CameraRoll, Animated, Easing, Image, TouchableOpacity, StyleSheet, Text
 import { getRandomElement, randomAuthor, randomIdiom } from './services/idiom'
 import { FontAwesome } from '@expo/vector-icons'
 import backgrounds from './assets/images.json'
+import Screenshot from './Screenshot';
 import Ad from './Ad'
+import Content from './Content'
+import Toolbar from './Toolbar'
 
 // const images = backgrounds
 //   .map((image) => require(`./assets/backgrounds/${ image }`))
@@ -58,10 +61,14 @@ export default class App extends React.Component {
       pending: false,
       background: getRandomElement(images),
     }
+
+    this.onScreenshotSave = this.onScreenshotSave.bind(this)
+    this.randomize = this.randomize.bind(this)
+    this.favorite = this.favorite.bind(this)
+    this.download = this.download.bind(this)
   }
 
   randomize () {
-    this.spin();
     this.setState({
       idiom: randomIdiom(),
       author: randomAuthor(),
@@ -80,26 +87,12 @@ export default class App extends React.Component {
     this.setState({
       pending: true,
     }, () => {
-      Expo.takeSnapshotAsync(this.fullComponent, {
-        format: 'jpg',
-        quality: 1,
-        result: 'file',
-        height: 1334,
-        width: 750,
-      })
-      .then((image) => CameraRoll.saveToCameraRoll(image))
-      .then(() => {
-        this.setState({
-          pending: false,
+      this.capture()
+        .then(() => {
+          this.setState({
+            pending: false,
+          })
         })
-      })
-      .catch((ex) => {
-        this.setState({
-          pending: false,
-          errorMessage: ex.message,
-        })
-        console.error(ex);
-      })
     })
   }
 
@@ -110,6 +103,14 @@ export default class App extends React.Component {
           loaded: true,
         })
       })
+  }
+
+  onScreenshotSave (err, data) {
+    console.log('screenshot saved', err, data);
+    this.setState({
+      pending: false,
+      errorMessage: err && err.message,
+    })
   }
 
   preload (assets) {
@@ -124,16 +125,21 @@ export default class App extends React.Component {
     }
   }
 
-  spin () {
-    this.state.spinValue.setValue(0)
-    Animated.timing(
-      this.state.spinValue,
-      {
-        toValue: 1,
-        duration: 250,
-        easing: Easing.linear,
-      }
-    ).start()
+  capture () {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        Expo.takeSnapshotAsync(this.myBackground, {
+          format: 'jpg',
+          quality: 1,
+          result: 'file',
+          height: 1334,
+          width: 750,
+        })
+        .then((image) => CameraRoll.saveToCameraRoll(image))
+        .then(() => resolve({ message: 'Success' }))
+        .catch((ex) => reject(new Error({ message: `Failed to save screenshot: ${ ex.message }` })))
+      }, 1000)
+    })
   }
 
   render () {
@@ -141,36 +147,25 @@ export default class App extends React.Component {
       return <AppLoading />
     }
 
-     // Second interpolate beginning and end values (in this case 0 and 1)
-    const spin = this.state.spinValue.interpolate({
-      inputRange: [0, 1],
-      outputRange: ['0deg', '180deg'],
-    })
-
     return (
       <Image
-        ref={ (fullComponent) => this.fullComponent = fullComponent }
         source={ this.state.background }
-        style={ styles.container }
+        style={ [ styles.container ] }
+        ref={ (myBackground) => this.myBackground = myBackground }
       >
-        <View style={ styles.content }>
-          <Text style={ [ styles.text, styles.malaphor ] }>{ this.state.idiom }</Text>
-          <Text style={ [ styles.text, styles.author ] }>{ this.state.author }</Text>
-        </View>
-        { !this.state.pending &&
-          <View style={ styles.toolbar }>
-            <TouchableOpacity onPress={ () => this.favorite() }>
-              <FontAwesome name='star' size={ 50 } color={ this.state.favorited ? '#fc0' : '#fff' } style={ styles.button } />
-            </TouchableOpacity>
-            <TouchableOpacity onPress={ () => this.randomize() }>
-              <Animated.View style={{ transform: [{ rotate: spin }] }}>
-                <FontAwesome name='refresh' size={ 50 } color='#fff' style={ styles.button } />
-              </Animated.View>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={ () => this.download() }>
-              <FontAwesome name='download' size={ 50 } color='#fff' style={ styles.button } />
-            </TouchableOpacity>
-          </View>
+        <Content
+          idiom={ this.state.idiom }
+          author={ this.state.author }
+          style={{ marginTop: this.state.pending ? 200 : 0 }}
+        />
+        {
+          !this.state.pending &&
+          <Toolbar
+            shuffle={ this.randomize }
+            download={ this.download }
+            favorite={ this.favorite }
+            favorited={ this.state.favorited }
+          />
         }
         {
           !this.state.pending &&

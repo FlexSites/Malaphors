@@ -102,9 +102,9 @@
     "nouns": ["eggs", "basket"]
   },
   {
-    "idiom": "There's no use crying over spilt milk",
+    "idiom": "There's no use crying over spilled milk",
     "replacements": [
-      ["There's no use crying over spilt {{ nouns }}"]
+      ["There's no use crying over spilled {{ nouns }}"]
     ],
     "nouns": ["milk"]
   },
