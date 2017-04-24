@@ -1,2 +1,4 @@
-client/vendor
-node_modules
+node_modules/
+.expo/
+npm-debug.*
+assets/backgrounds

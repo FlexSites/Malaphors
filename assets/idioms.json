@@ -1,0 +1,344 @@
+[
+  {
+    "idiom": "The early bird gets the worm",
+    "replacements": [
+      ["The {{ adj }} {{ noun }}", "gets the {{ noun }}"]
+    ],
+    "adjectives": ["early"],
+    "nouns": ["bird", "worm"]
+  },
+  {
+    "idiom": "Cleanliness is next to godliness",
+    "replacements": [
+      ["{{ noun }}iness", "is next to {{ noun }}iness"]
+    ],
+    "nouns": ["god"],
+    "adjectives": ["godliness", "cleanliness"]
+  },
+  {
+    "idiom": "Actions speak louder than words.",
+    "replacements": [
+      ["{{ nouns }}", "speak louder than {{ nouns }}"]
+    ],
+    "nouns": ["actions", "words"]
+  },
+  {
+    "idiom": "Like taking candy from a baby",
+    "replacements": [
+      ["Taking {{ nouns }}", "from a {{ noun }}"]
+    ],
+    "nouns": ["candy", "baby"]
+  },
+  {
+    "idiom": "A picture is worth a thousand words",
+    "replacements": [
+      ["A {{ noun }}", "is worth a thousand {{ nouns }}"]
+    ],
+    "nouns": ["picture", "words"]
+  },
+  {
+    "idiom": "A rolling stone gathers no moss",
+    "replacements": [
+      ["A {{ noun }}", "gathers no {{ nouns }}"]
+    ],
+    "nouns": ["rolling stone", "moss"]
+  },
+  {
+    "idiom": "Curiosity killed the cat",
+    "replacements": [
+      ["{{ nouns }}", "killed the {{ noun }}"]
+    ],
+    "nouns": ["cat"]
+  },
+  {
+    "idiom": "A bird in the hand is worth two in the bush.",
+    "replacements": [
+      ["A {{ noun }} in the {{ noun }}", "is worth two in the {{ noun }}"]
+    ],
+    "nouns": ["bird", "hand", "bush"],
+    "numbers": ["two"]
+  },
+  {
+    "idiom": "All work and no play makes Jack a dull boy.",
+    "replacements": [
+      ["All {{ noun }} and no {{ noun }}", "makes Jack a {{ adj }} {{ noun }}"]
+    ],
+    "nouns": ["work", "play", "boy"],
+    "adjectives": ["dull"]
+  },
+  {
+    "idiom": "An apple a day keeps the doctor away.",
+    "replacements": [
+      ["An {{ noun }} a day", "keeps the {{ noun }} away."]
+    ],
+    "nouns": ["apple", "doctor"]
+  },
+  {
+    "idiom": "April showers brings May flowers.",
+    "replacements": [
+      ["April {{ nouns }} brings May {{ nouns }}"]
+    ],
+    "nouns": ["showers", "flowers"]
+  },
+  {
+    "idiom": "Beggars can't be choosers",
+    "replacements": [
+      ["{{ nouns }}", "can't be {{ nouns }}"]
+    ],
+    "nouns": ["beggars", "choosers"]
+  },
+  {
+    "idiom": "Don't count your chickens before they are hatched.",
+    "replacements": [
+      ["Don't count your {{ nouns }} before they're hatched."]
+    ],
+    "nouns": ["chickens"]
+  },
+  {
+    "idiom": "Don't put all your eggs in one basket.",
+    "replacements": [
+      ["Don't put all your {{ nouns }} in one {{ noun }}"]
+    ],
+    "nouns": ["eggs", "basket"]
+  },
+  {
+    "idiom": "There's no use crying over spilt milk",
+    "replacements": [
+      ["There's no use crying over spilt {{ nouns }}"]
+    ],
+    "nouns": ["milk"]
+  },
+  {
+    "idiom": "Soft as a baby's bottom",
+    "replacements": [
+      ["{{ adj }}", "as a {{ noun }}'s {{ noun }}"]
+    ],
+    "nouns": ["baby", "bottom"],
+    "adjectives": ["soft"]
+  },
+  {
+    "idiom": "Two wrongs do not make a right",
+    "replacements": [
+      ["Two {{ nouns }} do not make a {{ noun }}"]
+    ],
+    "nouns": ["wrongs", "right"]
+  },
+  {
+    "idiom": "Variety is the spice of life.",
+    "replacements": [
+      ["{{ noun }} is the", "{{ noun }} of {{ noun }}"]
+    ],
+    "nouns": ["variety", "spice", "life"]
+  },
+  {
+    "idiom": "You can't have your cake and eat it too",
+    "replacements": [
+      ["You can't have your {{ noun }}", "and eat it too"]
+    ],
+    "nouns": ["cake"]
+  },
+  {
+    "idiom": "Birds of a feather flock together.",
+    "replacements": [
+      ["{{ nouns }} of a {{ noun }}", "flock together"]
+    ],
+    "nouns": ["birds", "feather"]
+  },
+  {
+    "idiom": "A tough act to follow",
+    "replacements": [
+      ["A tough {{ noun }} to follow"]
+    ],
+    "nouns": ["act"]
+  },
+  {
+    "idiom": "You can lead a horse to water, but you can't make it drink",
+    "replacements": [
+      ["You can lead a {{ noun }} to {{ noun }},", "but you can't make it {{ verb }}"]
+    ],
+    "nouns": ["horse", "water"],
+    "verbs": ["drink"]
+  },
+  {
+    "idiom": "A fly in the ointment",
+    "replacements": [
+      ["A {{ noun }} in the {{ noun }}"]
+    ],
+    "nouns": ["fly", "ointment", "wrench", "engine"]
+  },
+  {
+    "idiom": "A wrench in the engine",
+    "replacements": [
+      ["A {{ noun }} in the {{ noun }}"]
+    ],
+    "nouns": ["wrench", "engine"]
+  },
+  {
+    "idiom": "Don't bark up the wrong tree",
+    "replacements": [
+      ["Don't {{ verb }} up the wrong {{ noun }}"]
+    ],
+    "nouns": ["tree"],
+    "verbs": ["bark"]
+  },
+  {
+    "idiom": "Skating on thin ice",
+    "replacements": [
+      ["Skating on thin {{ noun }}"]
+    ],
+    "nouns": ["ice"]
+  },
+  {
+    "idiom": "That ship has sailed",
+    "replacements": [
+      ["That {{ noun }} has sailed"]
+    ],
+    "nouns": ["ship"]
+  },
+  {
+    "idiom": "If a tree falls in the woods, does it make a sound?",
+    "replacements": [
+      ["If a {{ noun }} falls in the {{ noun }}, does it make a {{ noun }}?"]
+    ],
+    "nouns": ["tree", "woods", "sound"]
+  },
+  {
+    "idiom": "Does a bear shit in the woods?",
+    "replacements": [
+      ["Does a {{ noun }} {{ verb }} in the {{ noun }}?"]
+    ],
+    "nouns": ["bear", "woods"],
+    "verbs": ["shit"]
+  },
+  {
+    "idiom": "We'll cross that bridge when we get there",
+    "replacements": [
+      ["We'll cross that {{ noun }} when we get there"]
+    ],
+    "nouns": ["bridge"]
+  },
+  {
+    "idiom": "Don't burn bridges",
+    "replacements": [
+      ["Don't burn {{ nouns }}"]
+    ],
+    "nouns": ["bridges"]
+  },
+  {
+    "idiom": "A broken clock is right twice a day",
+    "replacements": [
+      ["A {{ adj }} {{ noun }} is right twice a day"]
+    ],
+    "nouns": ["clock"],
+    "adjectives": ["broken"]
+  },
+  {
+    "idiom": "This isn't rocket science",
+    "replacements": [
+      ["This isn't {{ noun }} {{ noun }}"]
+    ],
+    "nouns": ["rocket", "science", "brain", "surgery"]
+  },
+  {
+    "idiom": "Whatever floats your boat",
+    "replacements": [
+      ["Whatever floats your {{ noun }}"]
+    ],
+    "nouns": ["boat"]
+  },
+  {
+    "idiom": "Don't burn the candle at both ends",
+    "replacements": [
+      ["Don't {{ verb }} the {{ noun }} at both ends"]
+    ],
+    "nouns": ["candle"],
+    "verbs": ["burn"]
+  },
+  {
+    "idiom": "Caught between a rock and a hard place",
+    "replacements": [
+      ["Caught between a {{ noun }} and a {{ noun }}"]
+    ],
+    "nouns": ["rock", "hard place"]
+  },
+  {
+    "idiom": "A penny saved is a penny earned",
+    "replacements": [
+      ["A {{ noun }} saved is a {{ noun }} earned"]
+    ],
+    "nouns": ["penny", "penny"]
+  },
+  {
+    "idiom": "Fun as a barrel of monkeys",
+    "replacements": [
+      ["Fun as {{ noun }} of {{ nouns }}"]
+    ],
+    "nouns": ["a barrel", "monkeys"]
+  },
+  {
+    "idiom": "Easy as shooting fish in barrel",
+    "replacements": [
+      ["Easy as {{ verb }}ing {{ noun }} in {{ noun }}"]
+    ],
+    "nouns": ["fish", "a barrel"],
+    "adjectives": ["easy"],
+    "verbs": ["shoot"]
+  },
+  {
+    "idiom": "Straight from the horses mouth",
+    "replacements": [
+      ["Straight from the {{ noun }}'s {{ noun }}"]
+    ],
+    "nouns": ["horse", "mouth"]
+  },
+  {
+    "idiom": "I heard it through the grapevine",
+    "replacements": [
+      ["I {{ verb }} it through the {{ noun }}"]
+    ],
+    "nouns": ["grapevine"],
+    "verbs": ["heard"]
+  },
+  {
+    "idiom": "You need to strike when the iron is hot",
+    "replacements": [
+      ["You need to {{ verb }} when the {{ noun }} is {{ adj }}"]
+    ],
+    "nouns": ["iron"],
+    "verbs": ["strike"],
+    "adjectives": ["hot"]
+  },
+  {
+    "idiom": "Why buy the cow when you have the milk?",
+    "replacements": [
+      ["Why {{ verb }} the {{ noun }} when you have the {{ noun }}?"]
+    ],
+    "nouns": ["cow", "milk"],
+    "verbs": ["buy"]
+  },
+  {
+    "idiom": "Let's make like a tree and leave",
+    "replacements": [
+      ["Let's {{ verb }} like a {{ noun }} and {{ verb }}"]
+    ],
+    "nouns": ["tree"],
+    "verbs": ["make", "leave"]
+  },
+  {
+    "idiom": "Does the pope wear a funny hat?",
+    "replacements": [
+      ["Does the {{ noun }} {{ verb }} a {{ adj }} {{ noun }}?"]
+    ],
+    "nouns": ["pope", "hat"],
+    "verbs": ["wear"],
+    "adjectives": ["funny"]
+  },
+  {
+    "idiom": "You can't squeeze blood from a stone.",
+    "replacements": [
+      ["You can't {{ verb }} {{ nouns }} from a {{ noun }}."]
+    ],
+    "nouns": ["blood", "stone"],
+    "verbs": ["squeeze"]
+  }
+]
