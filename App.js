@@ -1,13 +1,15 @@
 import React from 'react'
 import Expo, { AppLoading } from 'expo'
-import { CameraRoll, Animated, Easing, Image, TouchableOpacity, StyleSheet, Text, View } from 'react-native'
+import { Animated, AsyncStorage, CameraRoll, Easing, Image, InteractionManager, LayoutAnimation, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { getRandomElement, randomAuthor, randomIdiom } from './services/idiom'
 import { FontAwesome } from '@expo/vector-icons'
 import backgrounds from './assets/images.json'
-import Screenshot from './Screenshot';
+import Screenshot from './Screenshot'
 import Ad from './Ad'
 import Content from './Content'
 import Toolbar from './Toolbar'
+import Logo from './Logo'
+import Drawer from 'react-native-drawer'
 
 // const images = backgrounds
 //   .map((image) => require(`./assets/backgrounds/${ image }`))
@@ -60,24 +62,47 @@ export default class App extends React.Component {
       favorited: false,
       pending: false,
       background: getRandomElement(images),
+      logo: require('./assets/two-color.png'),
+      favorites: [],
+      drawerOpen: false,
     }
 
     this.onScreenshotSave = this.onScreenshotSave.bind(this)
-    this.randomize = this.randomize.bind(this)
     this.favorite = this.favorite.bind(this)
     this.download = this.download.bind(this)
+    this.display = this.display.bind(this)
   }
 
-  randomize () {
+  display ({ idiom = randomIdiom(), author = randomAuthor(), background = getRandomElement(images), favorited = false } = {}) {
     this.setState({
-      idiom: randomIdiom(),
-      author: randomAuthor(),
-      background: getRandomElement(images),
-      favorited: false,
+      idiom,
+      author,
+      background,
+      favorited,
+      drawerOpen: false,
     })
   }
 
   favorite () {
+    const current = {
+      idiom: this.state.idiom,
+      author: this.state.author,
+      background: this.state.background,
+    }
+    InteractionManager.runAfterInteractions(() => {
+      AsyncStorage.getItem('favorites')
+        .then((favorites = '[]') => JSON.parse(favorites || '[]'))
+        .then((favorites) => {
+          favorites.push(current)
+
+          console.log('saving favorite')
+
+          this.setState({ favorites })
+
+          return AsyncStorage.setItem('favorites', JSON.stringify(favorites))
+        })
+    })
+
     this.setState({
       favorited: true,
     })
@@ -96,6 +121,18 @@ export default class App extends React.Component {
     })
   }
 
+  componentDidMount () {
+    LayoutAnimation.spring()
+
+    AsyncStorage.getItem('favorites')
+      .then((favorites) => {
+        return JSON.parse(favorites || '[]')
+      })
+      .then((favorites) => {
+        this.setState({ favorites })
+      })
+  }
+
   componentWillMount () {
     return this.preload(images)
       .then(() => {
@@ -106,7 +143,7 @@ export default class App extends React.Component {
   }
 
   onScreenshotSave (err, data) {
-    console.log('screenshot saved', err, data);
+    console.log('screenshot saved', err, data)
     this.setState({
       pending: false,
       errorMessage: err && err.message,
@@ -148,34 +185,76 @@ export default class App extends React.Component {
     }
 
     return (
-      <Image
-        source={ this.state.background }
-        style={ [ styles.container ] }
-        ref={ (myBackground) => this.myBackground = myBackground }
-      >
-        <Content
-          idiom={ this.state.idiom }
-          author={ this.state.author }
-          style={{ marginTop: this.state.pending ? 200 : 0 }}
-        />
-        {
-          !this.state.pending &&
-          <Toolbar
-            shuffle={ this.randomize }
-            download={ this.download }
-            favorite={ this.favorite }
-            favorited={ this.state.favorited }
-          />
-        }
-        {
-          !this.state.pending &&
-          <View style={{ width: '100%', height: 70 }}>
-            <Ad />
+      <Drawer
+        open={ this.state.drawerOpen }
+        type="overlay"
+        tapToClose={true}
+        openDrawerOffset={0.2} // 20% gap on the right side of drawer
+        panCloseMask={0.2}
+        panOpenMask={0.2}
+        closedDrawerOffset={-3}
+        styles={drawerStyles}
+        tweenHandler={(ratio) => ({
+          main: { opacity:(2-ratio)/2 }
+        })}
+        content={
+          <View style={ styles.drawer }>
+            <Text style={ styles.drawerTitle }>Favorites</Text>
+            <ScrollView style={ styles.drawerContent }>
+              {
+                this.state.favorites.map((favorite) => {
+                  favorite.favorited = true
+                  return (
+                    <TouchableOpacity key={ favorite.idiom + favorite.author } onPress={ () => this.display(favorite) }>
+                      <View style={ styles.drawerItem }>
+                        <Text style={ styles.drawerItemText }>{ favorite.idiom }</Text>
+                      </View>
+                    </TouchableOpacity>
+                  )
+                })
+              }
+            </ScrollView>
           </View>
         }
-      </Image>
+        captureGestures={ true }
+        >
+        <Image
+          source={ this.state.background }
+          style={ [ styles.container ] }
+          ref={ (myBackground) => this.myBackground = myBackground }
+        >
+          <Content
+            idiom={ this.state.idiom }
+            author={ this.state.author }
+            style={{ marginTop: this.state.pending ? 200 : 0 }}
+          />
+          {
+            !this.state.pending &&
+            <Toolbar
+              shuffle={ this.display }
+              download={ this.download }
+              favorite={ this.favorite }
+              favorited={ this.state.favorited }
+            />
+          }
+          <View style={{ alignItems: 'center', height: 50 }}>
+            <Logo width={ 125 } style={ styles.shadow } />
+          </View>
+          {
+            !this.state.pending &&
+            <View style={{ width: '100%', height: 70 }}>
+              <Ad />
+            </View>
+          }
+        </Image>
+      </Drawer>
     )
   }
+}
+
+const drawerStyles = {
+  drawer: { shadowColor: '#000000', shadowOpacity: 0.8, shadowRadius: 3},
+  main: {paddingLeft: 3},
 }
 
 const shadowStyles = {
@@ -186,6 +265,32 @@ const shadowStyles = {
 }
 
 const styles = StyleSheet.create({
+  drawer: {
+    // backgroundColor: '#f00',
+    paddingTop: 20,
+    flex: 1,
+    justifyContent: 'space-between',
+  },
+  drawerTitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#000',
+    padding: 20,
+  },
+  drawerContent: {
+    flex: 1,
+    borderTopWidth: 1,
+    borderColor: '#ccc',
+  },
+  drawerItem: {
+    padding: 20,
+    borderBottomWidth: 1,
+    borderColor: '#ccc',
+  },
+  drawerItemText: {
+    fontSize: 16,
+    color: '#444',
+  },
   container: {
     flex: 1,
     width: '100%',
@@ -203,6 +308,9 @@ const styles = StyleSheet.create({
     height: 200,
     flexDirection: 'row',
     justifyContent: 'space-between',
+  },
+  favoriteList: {
+    backgroundColor: '#f0f',
   },
   button: {
     ...shadowStyles,

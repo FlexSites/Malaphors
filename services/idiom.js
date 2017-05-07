@@ -14,6 +14,12 @@ const PLURAL_NOUN_TOKEN = 'nouns'
 const VERB_TOKEN = 'verb'
 const ADJECTIVE_TOKEN = 'adj'
 
+const ALL_VERBS = Idioms.reduce((prev, curr) => {
+  return prev.concat(curr.verbs || []);
+}, [])
+
+console.log(ALL_VERBS);
+
 function randomIdiom () {
   const idioms = getRandomElements(Idioms, 2)//eslint-disable-line no-magic-numbers
 

@@ -2,30 +2,34 @@
   {
     "idiom": "The early bird gets the worm",
     "replacements": [
-      ["The {{ adj }} {{ noun }}", "gets the {{ noun }}"]
+      ["The {{ adj }} {{ noun }} {{ verb }}s the {{ noun }}"]
     ],
     "adjectives": ["early"],
+    "verbs": ["get"],
     "nouns": ["bird", "worm"]
   },
   {
     "idiom": "Cleanliness is next to godliness",
     "replacements": [
-      ["{{ noun }}iness", "is next to {{ noun }}iness"]
+      ["{{ noun }}iness is next to {{ noun }}iness"],
+      ["{{ adj }}ness is next to {{ adj }}ness"]
     ],
     "nouns": ["god"],
-    "adjectives": ["godliness", "cleanliness"]
+    "adjectives": ["godly", "cleanly"]
   },
   {
     "idiom": "Actions speak louder than words.",
     "replacements": [
-      ["{{ nouns }}", "speak louder than {{ nouns }}"]
+      ["{{ nouns }} {{ verb }} {{ adj }}er than {{ nouns }}"]
     ],
-    "nouns": ["actions", "words"]
+    "verbs": ["speak"],
+    "adjectives": ["loud"],
+    "nouns": ["action", "word"]
   },
   {
     "idiom": "Like taking candy from a baby",
     "replacements": [
-      ["Taking {{ nouns }}", "from a {{ noun }}"]
+      ["Taking {{ nouns }} from a {{ noun }}"]
     ],
     "nouns": ["candy", "baby"]
   },
@@ -34,19 +38,19 @@
     "replacements": [
       ["A {{ noun }}", "is worth a thousand {{ nouns }}"]
     ],
-    "nouns": ["picture", "words"]
+    "nouns": ["picture", "word"]
   },
   {
     "idiom": "A rolling stone gathers no moss",
     "replacements": [
-      ["A {{ noun }}", "gathers no {{ nouns }}"]
+      ["A {{ noun }} gathers no {{ nouns }}"]
     ],
     "nouns": ["rolling stone", "moss"]
   },
   {
     "idiom": "Curiosity killed the cat",
     "replacements": [
-      ["{{ nouns }}", "killed the {{ noun }}"]
+      ["{{ nouns }} killed the {{ noun }}"]
     ],
     "nouns": ["cat"]
   },
@@ -61,7 +65,7 @@
   {
     "idiom": "All work and no play makes Jack a dull boy.",
     "replacements": [
-      ["All {{ noun }} and no {{ noun }}", "makes Jack a {{ adj }} {{ noun }}"]
+      ["All {{ noun }} and no {{ noun }} makes Jack a {{ adj }} {{ noun }}"]
     ],
     "nouns": ["work", "play", "boy"],
     "adjectives": ["dull"]
@@ -69,7 +73,7 @@
   {
     "idiom": "An apple a day keeps the doctor away.",
     "replacements": [
-      ["An {{ noun }} a day", "keeps the {{ noun }} away."]
+      ["An {{ noun }} a day keeps the {{ noun }} away."]
     ],
     "nouns": ["apple", "doctor"]
   },
@@ -83,7 +87,7 @@
   {
     "idiom": "Beggars can't be choosers",
     "replacements": [
-      ["{{ nouns }}", "can't be {{ nouns }}"]
+      ["{{ nouns }} can't be {{ nouns }}"]
     ],
     "nouns": ["beggars", "choosers"]
   },
@@ -111,7 +115,7 @@
   {
     "idiom": "Soft as a baby's bottom",
     "replacements": [
-      ["{{ adj }}", "as a {{ noun }}'s {{ noun }}"]
+      ["{{ adj }} as a {{ noun }}'s {{ noun }}"]
     ],
     "nouns": ["baby", "bottom"],
     "adjectives": ["soft"]
@@ -126,21 +130,21 @@
   {
     "idiom": "Variety is the spice of life.",
     "replacements": [
-      ["{{ noun }} is the", "{{ noun }} of {{ noun }}"]
+      ["{{ noun }} is the {{ noun }} of {{ noun }}"]
     ],
     "nouns": ["variety", "spice", "life"]
   },
   {
     "idiom": "You can't have your cake and eat it too",
     "replacements": [
-      ["You can't have your {{ noun }}", "and eat it too"]
+      ["You can't have your {{ noun }} and eat it too"]
     ],
     "nouns": ["cake"]
   },
   {
     "idiom": "Birds of a feather flock together.",
     "replacements": [
-      ["{{ nouns }} of a {{ noun }}", "flock together"]
+      ["{{ nouns }} of a {{ noun }} flock together"]
     ],
     "nouns": ["birds", "feather"]
   },
@@ -154,7 +158,7 @@
   {
     "idiom": "You can lead a horse to water, but you can't make it drink",
     "replacements": [
-      ["You can lead a {{ noun }} to {{ noun }},", "but you can't make it {{ verb }}"]
+      ["You can lead a {{ noun }} to {{ noun }}, but you can't make it {{ verb }}"]
     ],
     "nouns": ["horse", "water"],
     "verbs": ["drink"]

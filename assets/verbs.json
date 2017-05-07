@@ -1,0 +1,72 @@
+{
+  "get": {
+    "present": "get",
+    "continuous": "getting",
+    "past": "got"
+  },
+  "speak": {
+    "present": "speak",
+    "continuous": "speaking",
+    "past": "spoke"
+  },
+  "drink": {
+    "present": "drink",
+    "continuous": "drinking",
+    "past": "drank"
+  },
+  "bark": {
+    "present": "bark",
+    "continuous": "barking",
+    "past": "barked"
+  },
+  "shit": {
+    "present": "shit",
+    "continuous": "shitting",
+    "past": "shat"
+  },
+  "burn": {
+    "present": "burn",
+    "continuous": "burning",
+    "past": "burned"
+  },
+  "shoot": {
+    "present": "shoot",
+    "continuous": "shooting",
+    "past": "shot"
+  },
+  "hear": {
+    "present": "hear",
+    "continuous": "hearing",
+    "past": "heard"
+  },
+  "strike": {
+    "present": "strike",
+    "continuous": "strikeing",
+    "past": "struck"
+  },
+  "buy": {
+    "present": "buy",
+    "continuous": "buying",
+    "past": "bought"
+  },
+  "make": {
+    "present": "make",
+    "continuous": "makeing",
+    "past": "made"
+  },
+  "leave": {
+    "present": "leave",
+    "continuous": "leaveing",
+    "past": "left"
+  },
+  "wear": {
+    "present": "wear",
+    "continuous": "wearing",
+    "past": "wore"
+  },
+  "squeeze": {
+    "present": "squeeze",
+    "continuous": "squeezing",
+    "past": "squeezed"
+  }
+}
