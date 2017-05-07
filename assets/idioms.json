@@ -2,7 +2,8 @@
   {
     "idiom": "The early bird gets the worm",
     "replacements": [
-      ["The {{ adj }} {{ noun }} {{ verb }}s the {{ noun }}"]
+      ["The {{ adjective }} {{ noun_singluar }} {{ verb_future }} the {{ noun_singluar }}"],
+      ["The {{ adjective }} {{ noun_singluar }} {{ verb_past }} the {{ noun_singluar }}"]
     ],
     "adjectives": ["early"],
     "verbs": ["get"],
@@ -11,8 +12,8 @@
   {
     "idiom": "Cleanliness is next to godliness",
     "replacements": [
-      ["{{ noun }}iness is next to {{ noun }}iness"],
-      ["{{ adj }}ness is next to {{ adj }}ness"]
+      ["{{ noun_singluar }}iness is next to {{ noun_singluar }}iness"],
+      ["{{ adjective }}ness is next to {{ adjective }}ness"]
     ],
     "nouns": ["god"],
     "adjectives": ["godly", "cleanly"]
@@ -20,7 +21,7 @@
   {
     "idiom": "Actions speak louder than words.",
     "replacements": [
-      ["{{ nouns }} {{ verb }} {{ adj }}er than {{ nouns }}"]
+      ["{{ noun_plural }} {{ verb_present }} {{ adjective }}er than {{ noun_plural }}"]
     ],
     "verbs": ["speak"],
     "adjectives": ["loud"],
@@ -29,35 +30,42 @@
   {
     "idiom": "Like taking candy from a baby",
     "replacements": [
-      ["Taking {{ nouns }} from a {{ noun }}"]
+      ["Like {{ verb_continuous }} {{ mass_noun }} from a {{ noun_singluar }}"]
     ],
-    "nouns": ["candy", "baby"]
+    "mass_nouns": ["candy"],
+    "verbs": ["take"],
+    "nouns": ["baby"]
   },
   {
     "idiom": "A picture is worth a thousand words",
     "replacements": [
-      ["A {{ noun }}", "is worth a thousand {{ nouns }}"]
+      ["A {{ noun_singluar }}", "is worth a thousand {{ noun_plural }}"]
     ],
     "nouns": ["picture", "word"]
   },
   {
     "idiom": "A rolling stone gathers no moss",
     "replacements": [
-      ["A {{ noun }} gathers no {{ nouns }}"]
+      ["A {{ verb_continuous }} {{ noun_singluar }} {{ verb_future }} no {{ mass_noun }}"]
     ],
-    "nouns": ["rolling stone", "moss"]
+    "verbs": ["roll", "gather"],
+    "nouns": ["stone"],
+    "mass_nouns": ["stone", "moss"]
   },
   {
     "idiom": "Curiosity killed the cat",
     "replacements": [
-      ["{{ nouns }} killed the {{ noun }}"]
+      ["{{ noun_plural }} {{ verb_past }} the {{ noun_singluar }}"],
+      ["{{ noun_mass }} {{ verb_past }} the {{ noun_singluar }}"]
     ],
-    "nouns": ["cat"]
+    "verbs": ["kill"],
+    "nouns": ["cat"],
+    "abstract_nouns": ["curiosity"]
   },
   {
     "idiom": "A bird in the hand is worth two in the bush.",
     "replacements": [
-      ["A {{ noun }} in the {{ noun }}", "is worth two in the {{ noun }}"]
+      ["A {{ noun_singluar }} in the {{ noun_singluar }}", "is worth two in the {{ noun_singluar }}"]
     ],
     "nouns": ["bird", "hand", "bush"],
     "numbers": ["two"]
@@ -65,57 +73,69 @@
   {
     "idiom": "All work and no play makes Jack a dull boy.",
     "replacements": [
-      ["All {{ noun }} and no {{ noun }} makes Jack a {{ adj }} {{ noun }}"]
+      ["All {{ verb_present }} and no {{ verb_present }} makes Jack a {{ adjective }} {{ noun_singluar }}"]
     ],
-    "nouns": ["work", "play", "boy"],
+    "verbs": ["work", "play"],
+    "nouns": ["boy"],
     "adjectives": ["dull"]
   },
   {
     "idiom": "An apple a day keeps the doctor away.",
     "replacements": [
-      ["An {{ noun }} a day keeps the {{ noun }} away."]
+      ["An {{ noun_singluar }} a day {{ verb_future }} the {{ noun_singluar }} away."],
+      ["An {{ noun_singluar }} a day {{ verb_past }} the {{ noun_singluar }} away."]
     ],
+    "verbs": ["keep"],
     "nouns": ["apple", "doctor"]
   },
   {
     "idiom": "April showers brings May flowers.",
     "replacements": [
-      ["April {{ nouns }} brings May {{ nouns }}"]
+      ["{{ proper_noun }} {{ noun_plural }} {{ verb_future }} {{ proper_noun }} {{ noun_plural }}"],
+      ["{{ proper_noun }} {{ noun_plural }} {{ verb_past }} {{ proper_noun }} {{ noun_plural }}"]
     ],
+    "verbs": ["bring"],
+    "proper_nouns": ["April", "May"],
     "nouns": ["showers", "flowers"]
   },
   {
     "idiom": "Beggars can't be choosers",
     "replacements": [
-      ["{{ nouns }} can't be {{ nouns }}"]
+      ["{{ noun_plural }} can't be {{ noun_plural }}"]
     ],
-    "nouns": ["beggars", "choosers"]
+    "nouns": ["beggar", "chooser"]
   },
   {
     "idiom": "Don't count your chickens before they are hatched.",
     "replacements": [
-      ["Don't count your {{ nouns }} before they're hatched."]
+      ["Don't {{ verb_present }} your {{ noun_plural }} before they {{ verb_present }}."],
+      ["Don't {{ verb_present }} your {{ mass_noun }} before it {{ verb_future }}"]
     ],
-    "nouns": ["chickens"]
+    "verbs": ["count", "hatch"],
+    "nouns": ["chicken"]
   },
   {
-    "idiom": "Don't put all your eggs in one basket.",
+    "idiom": "Don't put all your eggs in one basket",
     "replacements": [
-      ["Don't put all your {{ nouns }} in one {{ noun }}"]
+      ["Don't put all your {{ noun_plural }} in one {{ noun_singluar }}"],
+      ["Don't put all your {{ mass_noun }} in one {{ noun_singluar }}"]
     ],
-    "nouns": ["eggs", "basket"]
+    "nouns": ["egg", "basket"]
   },
   {
     "idiom": "There's no use crying over spilled milk",
     "replacements": [
-      ["There's no use crying over spilled {{ nouns }}"]
+      ["There's no use {{ verb_continuous }} over {{ verb_past }} {{ noun_plural }}"],
+      ["There's no use {{ verb_continuous }} over {{ verb_past }} {{ mass_noun }}"]
     ],
+    "verbs": ["cry", "spill"],
     "nouns": ["milk"]
   },
   {
     "idiom": "Soft as a baby's bottom",
     "replacements": [
-      ["{{ adj }} as a {{ noun }}'s {{ noun }}"]
+      ["{{ adjective }} as a {{ noun_singluar }}'s {{ noun_singluar }}"],
+      ["{{ adjective }} as {{ proper_noun }}'s {{ noun_singluar }}"]
     ],
     "nouns": ["baby", "bottom"],
     "adjectives": ["soft"]
@@ -123,115 +143,125 @@
   {
     "idiom": "Two wrongs do not make a right",
     "replacements": [
-      ["Two {{ nouns }} do not make a {{ noun }}"]
+      ["Two {{ noun_plural }} do not make a {{ noun_singluar }}"]
     ],
-    "nouns": ["wrongs", "right"]
+    "nouns": ["wrong", "right"]
   },
   {
     "idiom": "Variety is the spice of life.",
     "replacements": [
-      ["{{ noun }} is the {{ noun }} of {{ noun }}"]
+      ["{{ abstract_noun }} is the {{ noun_singluar }} of {{ abstract_noun }}"]
     ],
-    "nouns": ["variety", "spice", "life"]
+    "abstract_nouns": ["variety", "life"],
+    "nouns": ["spice"]
   },
   {
     "idiom": "You can't have your cake and eat it too",
     "replacements": [
-      ["You can't have your {{ noun }} and eat it too"]
+      ["You can't {{ verb_present }} your {{ noun_singluar }} and {{ verb_present }} it too"],
+      ["You can't {{ verb_present }} your {{ mass_noun }} and {{ verb_present }} it too"]
     ],
+    "verbs": ["have", "eat"],
     "nouns": ["cake"]
   },
   {
     "idiom": "Birds of a feather flock together.",
     "replacements": [
-      ["{{ nouns }} of a {{ noun }} flock together"]
+      ["{{ noun_plural }} of a {{ noun_singluar }} {{ verb_present }} together"]
     ],
-    "nouns": ["birds", "feather"]
+    "verbs": ["flock"],
+    "nouns": ["bird", "feather"]
   },
   {
     "idiom": "A tough act to follow",
     "replacements": [
-      ["A tough {{ noun }} to follow"]
+      ["A {{ adjective }} {{ noun_singluar }} to {{ verb_present }}"]
     ],
+    "adjectives": ["tough"],
+    "verbs": ["follow"],
     "nouns": ["act"]
   },
   {
     "idiom": "You can lead a horse to water, but you can't make it drink",
     "replacements": [
-      ["You can lead a {{ noun }} to {{ noun }}, but you can't make it {{ verb }}"]
+      ["You can {{ verb_present }} a {{ noun_singluar }} to {{ noun_singluar }}, but you can't make it {{ verb_present }}"]
     ],
     "nouns": ["horse", "water"],
-    "verbs": ["drink"]
+    "verbs": ["lead", "drink"]
   },
   {
     "idiom": "A fly in the ointment",
     "replacements": [
-      ["A {{ noun }} in the {{ noun }}"]
+      ["A {{ noun_singluar }} in the {{ noun_singluar }}"]
     ],
+    "mass_nouns": ["ointment"],
     "nouns": ["fly", "ointment", "wrench", "engine"]
-  },
-  {
-    "idiom": "A wrench in the engine",
-    "replacements": [
-      ["A {{ noun }} in the {{ noun }}"]
-    ],
-    "nouns": ["wrench", "engine"]
   },
   {
     "idiom": "Don't bark up the wrong tree",
     "replacements": [
-      ["Don't {{ verb }} up the wrong {{ noun }}"]
+      ["Don't {{ verb_present }} up the {{ adjective }} {{ noun_singluar }}"]
     ],
+    "adjectives": ["wrong"],
     "nouns": ["tree"],
     "verbs": ["bark"]
   },
   {
     "idiom": "Skating on thin ice",
     "replacements": [
-      ["Skating on thin {{ noun }}"]
+      ["{{ verb_continuous }} on {{ adjective }} {{ noun_singluar }}"]
     ],
+    "verbs": ["skate"],
+    "adjectives": ["thin"],
     "nouns": ["ice"]
   },
   {
     "idiom": "That ship has sailed",
     "replacements": [
-      ["That {{ noun }} has sailed"]
+      ["That {{ noun_singluar }} has {{ verb_past }}"]
     ],
+    "verbs": ["sail"],
     "nouns": ["ship"]
   },
   {
     "idiom": "If a tree falls in the woods, does it make a sound?",
     "replacements": [
-      ["If a {{ noun }} falls in the {{ noun }}, does it make a {{ noun }}?"]
+      ["If a {{ noun_singluar }} {{ verb_future }} in the {{ mass_noun }}, does it make a {{ noun_singluar }}?"]
     ],
-    "nouns": ["tree", "woods", "sound"]
+    "mass_nouns": ["woods"],
+    "nouns": ["tree", "sound"],
+    "verbs": ["fall"]
   },
   {
     "idiom": "Does a bear shit in the woods?",
     "replacements": [
-      ["Does a {{ noun }} {{ verb }} in the {{ noun }}?"]
+      ["Does a {{ noun_singluar }} {{ verb_present }} in the {{ mass_nouns }}?"],
+      ["Does a {{ noun_singluar }} {{ verb_present }} in the {{ noun_singular }}?"]
     ],
-    "nouns": ["bear", "woods"],
+    "mass_nouns": ["woods"],
+    "nouns": ["bear"],
     "verbs": ["shit"]
   },
   {
     "idiom": "We'll cross that bridge when we get there",
     "replacements": [
-      ["We'll cross that {{ noun }} when we get there"]
+      ["We'll {{ verb_present }} that {{ noun_singluar }} when we {{ verb_present }} there"]
     ],
+    "verbs": ["cross", "get"],
     "nouns": ["bridge"]
   },
   {
     "idiom": "Don't burn bridges",
     "replacements": [
-      ["Don't burn {{ nouns }}"]
+      ["Don't {{ verb_present }} your {{ noun_plural }}"]
     ],
-    "nouns": ["bridges"]
+    "verbs": ["burn"],
+    "nouns": ["bridge"]
   },
   {
     "idiom": "A broken clock is right twice a day",
     "replacements": [
-      ["A {{ adj }} {{ noun }} is right twice a day"]
+      ["A {{ adjective }} {{ noun_singluar }} is right twice a day"]
     ],
     "nouns": ["clock"],
     "adjectives": ["broken"]
@@ -239,21 +269,24 @@
   {
     "idiom": "This isn't rocket science",
     "replacements": [
-      ["This isn't {{ noun }} {{ noun }}"]
+      ["This isn't {{ noun_singluar }} {{ abstract_noun }}"]
     ],
-    "nouns": ["rocket", "science", "brain", "surgery"]
+    "abstract_nouns": ["science", "surgery"],
+    "nouns": ["rocket", "brain"]
   },
   {
     "idiom": "Whatever floats your boat",
     "replacements": [
-      ["Whatever floats your {{ noun }}"]
+      ["Whatever {{ verb_past }} your {{ noun_singluar }}"],
+      ["Whatever {{ verb_future }} your {{ noun_singluar }}"]
     ],
+    "verbs": ["float"],
     "nouns": ["boat"]
   },
   {
     "idiom": "Don't burn the candle at both ends",
     "replacements": [
-      ["Don't {{ verb }} the {{ noun }} at both ends"]
+      ["Don't {{ verb_present }} the {{ noun_singluar }} at both ends"]
     ],
     "nouns": ["candle"],
     "verbs": ["burn"]
@@ -261,52 +294,56 @@
   {
     "idiom": "Caught between a rock and a hard place",
     "replacements": [
-      ["Caught between a {{ noun }} and a {{ noun }}"]
+      ["{{ verb_past }} between a {{ noun_singluar }} and a {{ adjective }} {{ noun_singluar }}"]
     ],
-    "nouns": ["rock", "hard place"]
+    "adjectives": ["hard"],
+    "verbs": ["catch"],
+    "nouns": ["rock", "place"]
   },
   {
     "idiom": "A penny saved is a penny earned",
     "replacements": [
-      ["A {{ noun }} saved is a {{ noun }} earned"]
+      ["A {{ noun_singluar }} saved is a {{ noun_singluar }} earned"]
     ],
     "nouns": ["penny", "penny"]
   },
   {
     "idiom": "Fun as a barrel of monkeys",
     "replacements": [
-      ["Fun as {{ noun }} of {{ nouns }}"]
+      ["Fun as a {{ noun_singluar }} of {{ noun_plural }}"]
     ],
-    "nouns": ["a barrel", "monkeys"]
+    "nouns": ["barrel", "monkey"]
   },
   {
     "idiom": "Easy as shooting fish in barrel",
     "replacements": [
-      ["Easy as {{ verb }}ing {{ noun }} in {{ noun }}"]
+      ["Easy as {{ verb_present }}ing a {{ noun_singluar }} in a {{ noun_singluar }}"],
+      ["Easy as {{ verb_present }}ing {{ mass_noun }} in a {{ noun_singluar }}"]
     ],
-    "nouns": ["fish", "a barrel"],
+    "mass_nouns": ["fish"],
+    "nouns": ["fish", "barrel"],
     "adjectives": ["easy"],
     "verbs": ["shoot"]
   },
   {
     "idiom": "Straight from the horses mouth",
     "replacements": [
-      ["Straight from the {{ noun }}'s {{ noun }}"]
+      ["Straight from the {{ noun_singluar }}'s {{ noun_singluar }}"]
     ],
     "nouns": ["horse", "mouth"]
   },
   {
     "idiom": "I heard it through the grapevine",
     "replacements": [
-      ["I {{ verb }} it through the {{ noun }}"]
+      ["I {{ verb_past }} it through the {{ noun_singluar }}"]
     ],
     "nouns": ["grapevine"],
-    "verbs": ["heard"]
+    "verbs": ["hear"]
   },
   {
     "idiom": "You need to strike when the iron is hot",
     "replacements": [
-      ["You need to {{ verb }} when the {{ noun }} is {{ adj }}"]
+      ["You need to {{ verb_present }} when the {{ noun_singluar }} is {{ adjective }}"]
     ],
     "nouns": ["iron"],
     "verbs": ["strike"],
@@ -315,23 +352,24 @@
   {
     "idiom": "Why buy the cow when you have the milk?",
     "replacements": [
-      ["Why {{ verb }} the {{ noun }} when you have the {{ noun }}?"]
+      ["Why {{ verb_present }} the {{ mass_noun }} when you have the {{ noun_singluar }}?"]
     ],
-    "nouns": ["cow", "milk"],
+    "mass_nouns": ["milk"],
+    "nouns": ["cow"],
     "verbs": ["buy"]
   },
   {
     "idiom": "Let's make like a tree and leave",
     "replacements": [
-      ["Let's {{ verb }} like a {{ noun }} and {{ verb }}"]
+      ["Let's make like a {{ noun_singluar }} and {{ verb_present }}"]
     ],
     "nouns": ["tree"],
-    "verbs": ["make", "leave"]
+    "verbs": ["leave"]
   },
   {
     "idiom": "Does the pope wear a funny hat?",
     "replacements": [
-      ["Does the {{ noun }} {{ verb }} a {{ adj }} {{ noun }}?"]
+      ["Does the {{ noun_singluar }} {{ verb_present }} a {{ adjective }} {{ noun_singluar }}?"]
     ],
     "nouns": ["pope", "hat"],
     "verbs": ["wear"],
@@ -340,9 +378,11 @@
   {
     "idiom": "You can't squeeze blood from a stone.",
     "replacements": [
-      ["You can't {{ verb }} {{ nouns }} from a {{ noun }}."]
+      ["You can't {{ verb_present }} {{ noun_plural }} from a {{ noun_singluar }}."],
+      ["You can't {{ verb_present }} {{ mass_noun }} from a {{ noun_singluar }}."]
     ],
-    "nouns": ["blood", "stone"],
+    "mass_nouns": ["blood"],
+    "nouns": ["stone"],
     "verbs": ["squeeze"]
   }
 ]

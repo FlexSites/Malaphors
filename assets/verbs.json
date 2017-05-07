@@ -1,72 +1,234 @@
 {
-  "get": {
-    "present": "get",
-    "continuous": "getting",
-    "past": "got"
-  },
-  "speak": {
-    "present": "speak",
-    "continuous": "speaking",
-    "past": "spoke"
-  },
-  "drink": {
-    "present": "drink",
-    "continuous": "drinking",
-    "past": "drank"
-  },
+
   "bark": {
+    "future": "barks",
     "present": "bark",
     "continuous": "barking",
     "past": "barked"
   },
-  "shit": {
-    "present": "shit",
-    "continuous": "shitting",
-    "past": "shat"
+
+  "bring": {
+    "future": "brings",
+    "present": "bring",
+    "continuous": "bringing",
+    "past": "brought"
   },
+
   "burn": {
+    "future": "burns",
     "present": "burn",
     "continuous": "burning",
     "past": "burned"
   },
-  "shoot": {
-    "present": "shoot",
-    "continuous": "shooting",
-    "past": "shot"
-  },
-  "hear": {
-    "present": "hear",
-    "continuous": "hearing",
-    "past": "heard"
-  },
-  "strike": {
-    "present": "strike",
-    "continuous": "strikeing",
-    "past": "struck"
-  },
+
   "buy": {
+    "future": "buys",
     "present": "buy",
     "continuous": "buying",
     "past": "bought"
   },
-  "make": {
-    "present": "make",
-    "continuous": "makeing",
-    "past": "made"
+
+  "catch": {
+    "future": "catches",
+    "present": "catch",
+    "continuous": "catching",
+    "past": "caught"
   },
+
+  "count": {
+    "future": "counts",
+    "present": "count",
+    "continuous": "counting",
+    "past": "counted"
+  },
+
+  "cross": {
+    "future": "crosss",
+    "present": "cross",
+    "continuous": "crossing",
+    "past": "crossed"
+  },
+
+  "cry": {
+    "future": "cries",
+    "present": "cry",
+    "continuous": "crying",
+    "past": "cried"
+  },
+
+  "drink": {
+    "future": "drinks",
+    "present": "drink",
+    "continuous": "drinking",
+    "past": "drank"
+  },
+
+  "eat": {
+    "future": "eats",
+    "present": "eat",
+    "continuous": "eating",
+    "past": "ate"
+  },
+
+  "fall": {
+    "future": "falls",
+    "present": "fall",
+    "continuous": "falling",
+    "past": "fell"
+  },
+
+  "float": {
+    "future": "floats",
+    "present": "float",
+    "continuous": "floating",
+    "past": "floated"
+  },
+
+  "flock": {
+    "future": "flocks",
+    "present": "flock",
+    "continuous": "flocking",
+    "past": "flocked"
+  },
+
+  "follow": {
+    "future": "follows",
+    "present": "follow",
+    "continuous": "following",
+    "past": "followed"
+  },
+
+  "gather": {
+    "future": "gathers",
+    "present": "gather",
+    "continuous": "gathering",
+    "past": "gathered"
+  },
+
+  "get": {
+    "future": "gets",
+    "present": "get",
+    "continuous": "getting",
+    "past": "got"
+  },
+
+  "hatch": {
+    "future": "hatchs",
+    "present": "hatch",
+    "continuous": "hatching",
+    "past": "hatched"
+  },
+
+  "have": {
+    "future": "haves",
+    "present": "have",
+    "continuous": "having",
+    "past": "had"
+  },
+
+  "hear": {
+    "future": "hears",
+    "present": "hear",
+    "continuous": "hearing",
+    "past": "heard"
+  },
+
+  "keep": {
+    "future": "keeps",
+    "present": "keep",
+    "continuous": "keeping",
+    "past": "kept"
+  },
+
+  "kill": {
+    "future": "kills",
+    "present": "kill",
+    "continuous": "killing",
+    "past": "killed"
+  },
+
+  "lead": {
+    "future": "leads",
+    "present": "lead",
+    "continuous": "leading",
+    "past": "lead"
+  },
+
   "leave": {
+    "future": "leaves",
     "present": "leave",
-    "continuous": "leaveing",
+    "continuous": "leaving",
     "past": "left"
   },
-  "wear": {
-    "present": "wear",
-    "continuous": "wearing",
-    "past": "wore"
+
+  "make": {
+    "future": "makes",
+    "present": "make",
+    "continuous": "making",
+    "past": "made"
   },
+
+  "shit": {
+    "future": "shits",
+    "present": "shit",
+    "continuous": "shitting",
+    "past": "shat"
+  },
+
+  "shoot": {
+    "future": "shoots",
+    "present": "shoot",
+    "continuous": "shooting",
+    "past": "shot"
+  },
+
+  "skate": {
+    "future": "skates",
+    "present": "skate",
+    "continuous": "skating",
+    "past": "skated"
+  },
+
+  "speak": {
+    "future": "speaks",
+    "present": "speak",
+    "continuous": "speaking",
+    "past": "spoke"
+  },
+
+  "spill": {
+    "future": "spills",
+    "present": "spill",
+    "continuous": "spilling",
+    "past": "spilled"
+  },
+
   "squeeze": {
+    "future": "squeezes",
     "present": "squeeze",
     "continuous": "squeezing",
     "past": "squeezed"
+  },
+
+  "strike": {
+    "future": "strikes",
+    "present": "strike",
+    "continuous": "striking",
+    "past": "struck"
+  },
+
+  "take": {
+    "future": "takes",
+    "present": "take",
+    "continuous": "taking",
+    "past": "took",
+    "participle": "taken"
+  },
+
+  "wear": {
+    "future": "wears",
+    "present": "wear",
+    "continuous": "wearing",
+    "past": "wore"
   }
 }
