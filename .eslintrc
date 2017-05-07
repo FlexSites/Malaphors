@@ -3,5 +3,21 @@
     "comma-dangle": [2, "always-multiline"],
     "template-curly-spacing": [2, "always"]
   },
-  "extends": "standard"
+  "plugins": [
+    "react",
+    "react-native"
+  ],
+  "ecmaFeatures": {
+    "jsx": true
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true,
+      "jsx": true
+    }
+  },
+  "extends": [
+    "standard",
+    "plugin:react/recommended"
+  ]
 }
