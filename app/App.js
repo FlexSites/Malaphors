@@ -14,39 +14,39 @@ import Drawer from 'react-native-drawer'
 // const images = backgrounds
 //   .map((image) => require(`./assets/backgrounds/${ image }`))
 const images = [
-  require('./assets/backgrounds/_xve6pkgile-yasin-aribuga.jpg'),
-  require('./assets/backgrounds/aaron-burden-160103.jpg'),
-  require('./assets/backgrounds/alexandr-schwarz-660.jpg'),
-  require('./assets/backgrounds/arno-smit-165176.jpg'),
-  require('./assets/backgrounds/dominik-lange-62977.jpg'),
-  require('./assets/backgrounds/erik-zunder-100052.jpg'),
-  require('./assets/backgrounds/ezra-jeffrey-67140.jpg'),
-  require('./assets/backgrounds/felipe-santana-330.jpg'),
-  require('./assets/backgrounds/gabor-monori-2199.jpg'),
-  require('./assets/backgrounds/haq5cw9s6oo-bruno-marinho.jpg'),
-  require('./assets/backgrounds/hoach-le-dinh-91879.jpg'),
-  require('./assets/backgrounds/ixhfyja49m8-davey-heuser.jpg'),
-  require('./assets/backgrounds/jan-erik-waider-144380.jpg'),
-  require('./assets/backgrounds/john-towner-117317.jpg'),
-  require('./assets/backgrounds/jonatan-pie-224170.jpg'),
-  require('./assets/backgrounds/jonatan-pie-234237.jpg'),
-  require('./assets/backgrounds/kwi60pbam9i-gabriele-diwald.jpg'),
-  require('./assets/backgrounds/kzlaswr-7j4-thomas-kelley.jpg'),
-  require('./assets/backgrounds/matthew-henry-20172.jpg'),
-  require('./assets/backgrounds/nasa-89127.jpg'),
-  require('./assets/backgrounds/neven-krcmarek-123617.jpg'),
-  require('./assets/backgrounds/nithya-ramanujam-47.jpg'),
-  require('./assets/backgrounds/paul-gilmore-145802.jpg'),
-  require('./assets/backgrounds/paul-itkin-46110.jpg'),
-  require('./assets/backgrounds/petar-petkovski-157391.jpg'),
-  require('./assets/backgrounds/quin-stevenson-14794.jpg'),
-  require('./assets/backgrounds/rbthqzjd_vu-thaddaeus-lim.jpg'),
-  require('./assets/backgrounds/rebecca-matthews-132115.jpg'),
-  require('./assets/backgrounds/serge-kutuzov-239840.jpg'),
-  require('./assets/backgrounds/sergey-pesterev-222155.jpg'),
-  require('./assets/backgrounds/sven-scheuermeier-108248.jpg'),
-  require('./assets/backgrounds/xy9tbpyhr34-i-m-priscilla.jpg'),
-  require('./assets/backgrounds/yun-xu-236938.jpg'),
+  'https://malaphors.flexsites.io/mobile/backgrounds/_xve6pkgile-yasin-aribuga.jpg',
+  'https://malaphors.flexsites.io/mobile/backgrounds/aaron-burden-160103.jpg',
+  'https://malaphors.flexsites.io/mobile/backgrounds/alexandr-schwarz-660.jpg',
+  'https://malaphors.flexsites.io/mobile/backgrounds/arno-smit-165176.jpg',
+  'https://malaphors.flexsites.io/mobile/backgrounds/dominik-lange-62977.jpg',
+  'https://malaphors.flexsites.io/mobile/backgrounds/erik-zunder-100052.jpg',
+  'https://malaphors.flexsites.io/mobile/backgrounds/ezra-jeffrey-67140.jpg',
+  'https://malaphors.flexsites.io/mobile/backgrounds/felipe-santana-330.jpg',
+  'https://malaphors.flexsites.io/mobile/backgrounds/gabor-monori-2199.jpg',
+  'https://malaphors.flexsites.io/mobile/backgrounds/haq5cw9s6oo-bruno-marinho.jpg',
+  'https://malaphors.flexsites.io/mobile/backgrounds/hoach-le-dinh-91879.jpg',
+  'https://malaphors.flexsites.io/mobile/backgrounds/ixhfyja49m8-davey-heuser.jpg',
+  'https://malaphors.flexsites.io/mobile/backgrounds/jan-erik-waider-144380.jpg',
+  'https://malaphors.flexsites.io/mobile/backgrounds/john-towner-117317.jpg',
+  'https://malaphors.flexsites.io/mobile/backgrounds/jonatan-pie-224170.jpg',
+  'https://malaphors.flexsites.io/mobile/backgrounds/jonatan-pie-234237.jpg',
+  'https://malaphors.flexsites.io/mobile/backgrounds/kwi60pbam9i-gabriele-diwald.jpg',
+  'https://malaphors.flexsites.io/mobile/backgrounds/kzlaswr-7j4-thomas-kelley.jpg',
+  'https://malaphors.flexsites.io/mobile/backgrounds/matthew-henry-20172.jpg',
+  'https://malaphors.flexsites.io/mobile/backgrounds/nasa-89127.jpg',
+  'https://malaphors.flexsites.io/mobile/backgrounds/neven-krcmarek-123617.jpg',
+  'https://malaphors.flexsites.io/mobile/backgrounds/nithya-ramanujam-47.jpg',
+  'https://malaphors.flexsites.io/mobile/backgrounds/paul-gilmore-145802.jpg',
+  'https://malaphors.flexsites.io/mobile/backgrounds/paul-itkin-46110.jpg',
+  'https://malaphors.flexsites.io/mobile/backgrounds/petar-petkovski-157391.jpg',
+  'https://malaphors.flexsites.io/mobile/backgrounds/quin-stevenson-14794.jpg',
+  'https://malaphors.flexsites.io/mobile/backgrounds/rbthqzjd_vu-thaddaeus-lim.jpg',
+  'https://malaphors.flexsites.io/mobile/backgrounds/rebecca-matthews-132115.jpg',
+  'https://malaphors.flexsites.io/mobile/backgrounds/serge-kutuzov-239840.jpg',
+  'https://malaphors.flexsites.io/mobile/backgrounds/sergey-pesterev-222155.jpg',
+  'https://malaphors.flexsites.io/mobile/backgrounds/sven-scheuermeier-108248.jpg',
+  'https://malaphors.flexsites.io/mobile/backgrounds/xy9tbpyhr34-i-m-priscilla.jpg',
+  'https://malaphors.flexsites.io/mobile/backgrounds/yun-xu-236938.jpg',
 ]
 
 export default class App extends React.Component {
@@ -62,7 +62,6 @@ export default class App extends React.Component {
       favorited: false,
       pending: false,
       background: getRandomElement(images),
-      logo: require('./assets/two-color.png'),
       favorites: [],
       drawerOpen: false,
     }
@@ -135,7 +134,8 @@ export default class App extends React.Component {
 
   componentWillMount () {
     return this.preload(images)
-      .then(() => {
+      .then((results) => {
+        console.log('all preloaded');
         this.setState({
           loaded: true,
         })
@@ -156,6 +156,7 @@ export default class App extends React.Component {
         assets.map(this.preload.bind(this))
       )
     } else if (typeof assets === 'string') {
+      console.log('preloading', assets)
       return Image.prefetch(assets)
     } else {
       return Expo.Asset.fromModule(assets).downloadAsync()
@@ -219,7 +220,7 @@ export default class App extends React.Component {
         captureGestures={ true }
         >
         <Image
-          source={ this.state.background }
+          source={ { uri: this.state.background } }
           style={ [ styles.container ] }
           ref={ (myBackground) => this.myBackground = myBackground }
         >

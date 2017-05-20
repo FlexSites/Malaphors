@@ -1,4 +1,2 @@
-node_modules/
-.expo/
-npm-debug.*
-assets/backgrounds
+sources
+build

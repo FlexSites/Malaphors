@@ -1,0 +1,15 @@
+{
+  "expo": {
+    "sdkVersion": "16.0.0",
+    "orientation": "portrait",
+    "name": "Malaphors",
+    "icon": "https://malaphors.flexsites.io/mobile/icon.jpg",
+    "slug": "malaphors",
+    "ios": {
+      "bundleIdentifier": "com.flexsites.malaphors"
+    },
+    "android": {
+      "package": "com.flexsites.malaphors"
+    }
+  }
+}
