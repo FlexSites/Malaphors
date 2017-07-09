@@ -1,15 +1,23 @@
 {
   "expo": {
-    "sdkVersion": "16.0.0",
+    "sdkVersion": "17.0.0",
     "orientation": "portrait",
     "name": "Malaphors",
-    "icon": "https://malaphors.flexsites.io/mobile/icon.jpg",
+    "version": "1.0.1",
+    "description": "A malaphor is an informal term for a mixture of two aphorisms, idioms, or clichés (such as \"We'll burn that bridge when we come to it\"). Also called an idiom blend. Bored of the boring old idioms that you've heard over a thousand times? Why not mix them together? After all, a bush in the act is worth two in the bear. We believe that idioms deserve a refresh, and we've provided you a button to do just that. The Malaphors app has taken all of the classic idioms and phrases you hear every day and combined them. Just click through to generate your own unique combinations. There's literally millions of options, and they only get funnier! Download your favorite ones and even set them as your phone background!",
+    "icon": "https://malaphors.flexsites.io/mobile/icon.png",
     "slug": "malaphors",
     "ios": {
-      "bundleIdentifier": "com.flexsites.malaphors"
+      "buildNumber": "2",
+      "bundleIdentifier": "com.flexsites.malaphors",
+      "supportsTablet": false
     },
     "android": {
       "package": "com.flexsites.malaphors"
+    },
+    "loading": {
+      "backgroundImage": "./assets/splash-screen.png",
+      "hideExponentText": true
     }
   }
 }

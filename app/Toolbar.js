@@ -32,32 +32,35 @@ export default class Toolbar extends React.Component {
       outputRange: ['0deg', '180deg'],
     })
 
+    const iconColor = this.props.inverted ? '#000' : '#fff'
+    const styles = this.props.inverted ? inverted : standard
+
     return (
       <View style={ styles.toolbar }>
         <TouchableOpacity onPress={ () => this.props.favorite() }>
-          <FontAwesome name='star' size={ 50 } color={ this.props.favorited ? '#fc0' : '#fff' } style={ styles.button } />
+          <FontAwesome name='star' size={ 50 } color={ this.props.favorited ? '#fc0' : iconColor } style={ styles.button } />
         </TouchableOpacity>
         <TouchableOpacity onPress={ () => this.spin() }>
           <Animated.View style={{ transform: [{ rotate: spin }] }}>
-            <FontAwesome name='refresh' size={ 50 } color='#fff' style={ styles.button } />
+            <FontAwesome name='refresh' size={ 50 } color={ iconColor } style={ styles.button } />
           </Animated.View>
         </TouchableOpacity>
         <TouchableOpacity onPress={ () => this.props.download() }>
-          <FontAwesome name='download' size={ 50 } color='#fff' style={ styles.button } />
+          <FontAwesome name='download' size={ 50 } color={ iconColor } style={ styles.button } />
         </TouchableOpacity>
       </View>
     )
   }
 }
 
-const shadowStyles = {
-  shadowColor: '#000',
+const invertedShadowStyles = {
+  shadowColor: '#fff',
   shadowOffset: { height: 1, width: 1 },
   shadowOpacity: 50,
   shadowRadius: 1,
 }
 
-const styles = StyleSheet.create({
+const inverted = StyleSheet.create({
   container: {
     flex: 1,
     width: '100%',
@@ -77,39 +80,56 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   button: {
-    ...shadowStyles,
+    ...invertedShadowStyles,
     padding: 25,
   },
   shadow: {
-    ...shadowStyles,
+    ...invertedShadowStyles,
   },
   text: {
     fontWeight: 'bold',
     color: '#fff',
-    ...shadowStyles,
+    ...invertedShadowStyles,
   },
-  content: {
+})
+
+
+const standardShadowStyles = {
+  shadowColor: '#000',
+  shadowOffset: { height: 1, width: 1 },
+  shadowOpacity: 50,
+  shadowRadius: 1,
+}
+
+const standard = StyleSheet.create({
+  container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 30,
-  },
-  malaphor: {
-    fontSize: 40,
-    textAlign: 'center',
-    color: '#fff',
-  },
-  author: {
-    fontSize: 15,
-    textAlign: 'right',
-    color: '#fff',
     width: '100%',
+    height: '100%',
+    backgroundColor: 'transparent',
+    alignItems: 'center',
   },
-  adblock: {
+  image: {
+    width: 50,
     height: 50,
-    width: '100%',
-    backgroundColor: '#900',
+    borderWidth: 1,
+  },
+  toolbar: {
     alignItems: 'center',
-    justifyContent: 'center',
+    height: 200,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  button: {
+    ...standardShadowStyles,
+    padding: 25,
+  },
+  shadow: {
+    ...standardShadowStyles,
+  },
+  text: {
+    fontWeight: 'bold',
+    color: '#fff',
+    ...standardShadowStyles,
   },
 })

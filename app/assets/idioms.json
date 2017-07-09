@@ -317,8 +317,8 @@
   {
     "idiom": "Easy as shooting fish in barrel",
     "replacements": [
-      ["Easy as {{ verb_present }}ing a {{ noun_singluar }} in a {{ noun_singluar }}"],
-      ["Easy as {{ verb_present }}ing {{ mass_noun }} in a {{ noun_singluar }}"]
+      ["Easy as {{ verb_continuous }} a {{ noun_singluar }} in a {{ noun_singluar }}"],
+      ["Easy as {{ verb_continuous }} {{ mass_noun }} in a {{ noun_singluar }}"]
     ],
     "mass_nouns": ["fish"],
     "nouns": ["fish", "barrel"],

@@ -2,14 +2,19 @@ import React from 'react'
 import { View } from 'react-native'
 import { FacebookAds } from 'expo'
 
-export default () => {
-  return (
-    <FacebookAds.BannerView
-      placementId="407871102925516_407871649592128"
-      type="standard"
-      style={{ width: '100%', height: 50 }}
-      onClick={() => console.log('ad click')}
-      onError={(err) => console.log('ad error', err)}
-    />
-  )
+
+
+// FacebookAds.AdSettings.addTestDevice('74f5086de8cd75b7956f16b25b85110e1be8ee85')
+
+class AdComponent extends React.Component {
+  render () {
+    console.log('rendered ad!')
+    return (
+      <View>
+        <Text>{ this.props.nativeAd.description }</Text>
+      </View>
+    );
+  }
 }
+
+export default FacebookAds.withNativeAd(AdComponent)

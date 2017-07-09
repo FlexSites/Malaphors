@@ -1,6 +1,6 @@
 import React from 'react'
 import Expo, { AppLoading } from 'expo'
-import { Animated, AsyncStorage, CameraRoll, Easing, Image, InteractionManager, LayoutAnimation, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { ActionSheetIOS, Animated, AsyncStorage, CameraRoll, Easing, Image, InteractionManager, LayoutAnimation, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { getRandomElement, randomAuthor, randomIdiom } from './services/idiom'
 import { FontAwesome } from '@expo/vector-icons'
 import backgrounds from './assets/images.json'
@@ -10,43 +10,47 @@ import Content from './Content'
 import Toolbar from './Toolbar'
 import Logo from './Logo'
 import Drawer from 'react-native-drawer'
+import { FacebookAds } from 'expo'
+
+
+const adsManager = new FacebookAds.NativeAdsManager('407871102925516_424300797949213', 1);
 
 // const images = backgrounds
 //   .map((image) => require(`./assets/backgrounds/${ image }`))
 const images = [
-  'https://malaphors.flexsites.io/mobile/backgrounds/_xve6pkgile-yasin-aribuga.jpg',
-  'https://malaphors.flexsites.io/mobile/backgrounds/aaron-burden-160103.jpg',
-  'https://malaphors.flexsites.io/mobile/backgrounds/alexandr-schwarz-660.jpg',
-  'https://malaphors.flexsites.io/mobile/backgrounds/arno-smit-165176.jpg',
-  'https://malaphors.flexsites.io/mobile/backgrounds/dominik-lange-62977.jpg',
-  'https://malaphors.flexsites.io/mobile/backgrounds/erik-zunder-100052.jpg',
-  'https://malaphors.flexsites.io/mobile/backgrounds/ezra-jeffrey-67140.jpg',
-  'https://malaphors.flexsites.io/mobile/backgrounds/felipe-santana-330.jpg',
-  'https://malaphors.flexsites.io/mobile/backgrounds/gabor-monori-2199.jpg',
-  'https://malaphors.flexsites.io/mobile/backgrounds/haq5cw9s6oo-bruno-marinho.jpg',
-  'https://malaphors.flexsites.io/mobile/backgrounds/hoach-le-dinh-91879.jpg',
-  'https://malaphors.flexsites.io/mobile/backgrounds/ixhfyja49m8-davey-heuser.jpg',
-  'https://malaphors.flexsites.io/mobile/backgrounds/jan-erik-waider-144380.jpg',
-  'https://malaphors.flexsites.io/mobile/backgrounds/john-towner-117317.jpg',
-  'https://malaphors.flexsites.io/mobile/backgrounds/jonatan-pie-224170.jpg',
-  'https://malaphors.flexsites.io/mobile/backgrounds/jonatan-pie-234237.jpg',
-  'https://malaphors.flexsites.io/mobile/backgrounds/kwi60pbam9i-gabriele-diwald.jpg',
-  'https://malaphors.flexsites.io/mobile/backgrounds/kzlaswr-7j4-thomas-kelley.jpg',
-  'https://malaphors.flexsites.io/mobile/backgrounds/matthew-henry-20172.jpg',
-  'https://malaphors.flexsites.io/mobile/backgrounds/nasa-89127.jpg',
-  'https://malaphors.flexsites.io/mobile/backgrounds/neven-krcmarek-123617.jpg',
-  'https://malaphors.flexsites.io/mobile/backgrounds/nithya-ramanujam-47.jpg',
-  'https://malaphors.flexsites.io/mobile/backgrounds/paul-gilmore-145802.jpg',
-  'https://malaphors.flexsites.io/mobile/backgrounds/paul-itkin-46110.jpg',
-  'https://malaphors.flexsites.io/mobile/backgrounds/petar-petkovski-157391.jpg',
-  'https://malaphors.flexsites.io/mobile/backgrounds/quin-stevenson-14794.jpg',
-  'https://malaphors.flexsites.io/mobile/backgrounds/rbthqzjd_vu-thaddaeus-lim.jpg',
-  'https://malaphors.flexsites.io/mobile/backgrounds/rebecca-matthews-132115.jpg',
-  'https://malaphors.flexsites.io/mobile/backgrounds/serge-kutuzov-239840.jpg',
-  'https://malaphors.flexsites.io/mobile/backgrounds/sergey-pesterev-222155.jpg',
-  'https://malaphors.flexsites.io/mobile/backgrounds/sven-scheuermeier-108248.jpg',
-  'https://malaphors.flexsites.io/mobile/backgrounds/xy9tbpyhr34-i-m-priscilla.jpg',
-  'https://malaphors.flexsites.io/mobile/backgrounds/yun-xu-236938.jpg',
+  { url: '_xve6pkgile-yasin-aribuga.jpg', inverted: false },
+  { url: 'aaron-burden-160103.jpg', inverted: false },
+  { url: 'alexandr-schwarz-660.jpg', inverted: false },
+  { url: 'arno-smit-165176.jpg', inverted: false },
+  // { url: 'dominik-lange-62977.jpg', inverted: true },
+  { url: 'erik-zunder-100052.jpg', inverted: true },
+  { url: 'ezra-jeffrey-67140.jpg', inverted: false },
+  { url: 'felipe-santana-330.jpg', inverted: false },
+  { url: 'gabor-monori-2199.jpg', inverted: true },
+  { url: 'haq5cw9s6oo-bruno-marinho.jpg', inverted: false },
+  { url: 'hoach-le-dinh-91879.jpg', inverted: false },
+  { url: 'ixhfyja49m8-davey-heuser.jpg', inverted: false },
+  { url: 'jan-erik-waider-144380.jpg', inverted: false },
+  { url: 'john-towner-117317.jpg', inverted: false },
+  { url: 'jonatan-pie-224170.jpg', inverted: false },
+  { url: 'jonatan-pie-234237.jpg', inverted: false },
+  { url: 'kwi60pbam9i-gabriele-diwald.jpg', inverted: false },
+  { url: 'kzlaswr-7j4-thomas-kelley.jpg', inverted: true },
+  { url: 'matthew-henry-20172.jpg', inverted: false },
+  { url: 'nasa-89127.jpg', inverted: false },
+  { url: 'neven-krcmarek-123617.jpg', inverted: false },
+  { url: 'nithya-ramanujam-47.jpg', inverted: false },
+  { url: 'paul-gilmore-145802.jpg', inverted: false },
+  { url: 'paul-itkin-46110.jpg', inverted: false },
+  { url: 'petar-petkovski-157391.jpg', inverted: true },
+  { url: 'quin-stevenson-14794.jpg', inverted: false },
+  { url: 'rbthqzjd_vu-thaddaeus-lim.jpg', inverted: false },
+  { url: 'rebecca-matthews-132115.jpg', inverted: false },
+  { url: 'serge-kutuzov-239840.jpg', inverted: false },
+  { url: 'sergey-pesterev-222155.jpg', inverted: false },
+  { url: 'sven-scheuermeier-108248.jpg', inverted: false },
+  { url: 'xy9tbpyhr34-i-m-priscilla.jpg', inverted: false },
+  { url: 'yun-xu-236938.jpg', inverted: false },
 ]
 
 export default class App extends React.Component {
@@ -70,13 +74,14 @@ export default class App extends React.Component {
     this.favorite = this.favorite.bind(this)
     this.download = this.download.bind(this)
     this.display = this.display.bind(this)
+    this.share = this.share.bind(this)
   }
 
   display ({ idiom = randomIdiom(), author = randomAuthor(), background = getRandomElement(images), favorited = false } = {}) {
     this.setState({
       idiom,
       author,
-      background,
+      background: getRandomElement(images),
       favorited,
       drawerOpen: false,
     })
@@ -104,6 +109,28 @@ export default class App extends React.Component {
 
     this.setState({
       favorited: true,
+    })
+  }
+
+  share () {
+    Expo.takeSnapshotAsync(this.myBackground, {
+      format: 'jpg',
+      quality: 1,
+      result: 'file',
+      height: 1334,
+      width: 750,
+    })
+    .then((image) => {
+      console.log(image)
+      return ActionSheetIOS.showShareActionSheetWithOptions({
+        url: image,
+        message: 'https://malaphors.flexsites.io',
+        subject: this.state.idiom,
+      }, err => {
+        console.error('error', err)
+      }, (success, method) => {
+        console.log('success', success, method)
+      })
     })
   }
 
@@ -155,11 +182,11 @@ export default class App extends React.Component {
       return Promise.all(
         assets.map(this.preload.bind(this))
       )
-    } else if (typeof assets === 'string') {
+    } else if (typeof assets.url === 'string') {
       console.log('preloading', assets)
-      return Image.prefetch(assets)
+      return Image.prefetch(`https://malaphors.flexsites.io/mobile/backgrounds/${ assets.url }`)
     } else {
-      return Expo.Asset.fromModule(assets).downloadAsync()
+      return Expo.Asset.fromModule(assets.url).downloadAsync()
     }
   }
 
@@ -220,20 +247,22 @@ export default class App extends React.Component {
         captureGestures={ true }
         >
         <Image
-          source={ { uri: this.state.background } }
+          source={ { uri: `https://malaphors.flexsites.io/mobile/backgrounds/${ this.state.background.url }` } }
           style={ [ styles.container ] }
-          ref={ (myBackground) => this.myBackground = myBackground }
+          ref={ (myBackground) => { this.myBackground = myBackground } }
         >
           <Content
             idiom={ this.state.idiom }
             author={ this.state.author }
             style={{ marginTop: this.state.pending ? 200 : 0 }}
+            inverted={ this.state.background.inverted }
           />
           {
             !this.state.pending &&
             <Toolbar
+              inverted={ this.state.background.inverted }
               shuffle={ this.display }
-              download={ this.download }
+              download={ this.share }
               favorite={ this.favorite }
               favorited={ this.state.favorited }
             />
@@ -244,7 +273,7 @@ export default class App extends React.Component {
           {
             !this.state.pending &&
             <View style={{ width: '100%', height: 70 }}>
-              <Ad />
+              <Ad adsManager={ adsManager } />
             </View>
           }
         </Image>
